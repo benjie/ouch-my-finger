@@ -6,6 +6,8 @@ import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connecti
 import { PgAggregatesPreset } from "@graphile/pg-aggregates";
 import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
 
+// For configuration file details, see: https://postgraphile.org/postgraphile/next/config
+
 /** @type {GraphileConfig.Preset} */
 const preset = {
   extends: [
@@ -24,4 +26,5 @@ const preset = {
     explain: true,
   },
 };
+
 export default preset;
