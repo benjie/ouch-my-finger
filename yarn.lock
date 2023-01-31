@@ -685,10 +685,10 @@ pluralize@^7.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
   integrity sha512-ARhBOdzS3e41FbkW/XWrTEtukqqLoK5+Z/4UeDaLuSW+39JPeFgs4gCGqsrJHVZX0fUrx//4OF0K1CUGwlIFow==
 
-postgraphile-plugin-connection-filter@^3.0.0-0.0:
-  version "3.0.0-0.0"
-  resolved "https://registry.yarnpkg.com/postgraphile-plugin-connection-filter/-/postgraphile-plugin-connection-filter-3.0.0-0.0.tgz#65a753afd060a2ae2b42786918975efd798ac5db"
-  integrity sha512-is+GtV7jcjkn37tMAR/1JCkOam6SqXCtPUNE5xTQLLdaTRqGC/z+bcSetLJLn1Fl0oiHpiK/7e7H62y1Ou2PeQ==
+postgraphile-plugin-connection-filter@^3.0.0-0.1:
+  version "3.0.0-0.1"
+  resolved "https://registry.yarnpkg.com/postgraphile-plugin-connection-filter/-/postgraphile-plugin-connection-filter-3.0.0-0.1.tgz#3c5891762a798fcaf3196189d8433443f10526fd"
+  integrity sha512-SAhh5bKHlMoSt95kmVkQE2faJ27yImxjMcBqRKWACLH1rvfo8F7uGqRhzCWzUhJxJb64kXEdLe0wW8h056N/CA==
   dependencies:
     tslib "^2.4.1"
 
