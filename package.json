@@ -7,7 +7,7 @@
   "dependencies": {
     "@graphile-contrib/pg-many-to-many": "^2.0.0-0.0",
     "@graphile/pg-aggregates": "^0.2.0-0.0",
-    "postgraphile": "^5.0.0-0.9",
+    "postgraphile": "^5.0.0-0.11",
     "postgraphile-plugin-connection-filter": "^3.0.0-0.0"
   },
   "devDependencies": {
