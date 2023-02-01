@@ -139,10 +139,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@graphile/pg-aggregates@^0.2.0-0.0":
-  version "0.2.0-0.0"
-  resolved "https://registry.yarnpkg.com/@graphile/pg-aggregates/-/pg-aggregates-0.2.0-0.0.tgz#76bae955a06888b7d925db118feaf4b697e538d3"
-  integrity sha512-iqKynko907Xvs28A+WayUBG+ybxWR0wTvRozBmS8m98bzpLEO0/dYiZvra3GeS/S+HqTywCHcuvzARkvxsvd5A==
+"@graphile/pg-aggregates@^0.2.0-0.1":
+  version "0.2.0-0.1"
+  resolved "https://registry.yarnpkg.com/@graphile/pg-aggregates/-/pg-aggregates-0.2.0-0.1.tgz#1ee0d8b3f9051f7f1740d43d4f992dffefb58b1d"
+  integrity sha512-rUyXUQ1HhK7jO8wpNlUNUVCZokfk9Y8ZJJZqtfRZeisbGkPBGplclukW1WCxogoB+/gARYrGRbw8+JH7m9tkFw==
   dependencies:
     "@types/debug" "^4.1.7"
     "@types/graphql" "^14.5.0"
