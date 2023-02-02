@@ -111,10 +111,10 @@
     chalk "^4.1.2"
     tslib "^2.4.0"
 
-"@dataplan/pg@0.0.1-0.8", "@dataplan/pg@^0.0.1-0.8":
-  version "0.0.1-0.8"
-  resolved "https://registry.yarnpkg.com/@dataplan/pg/-/pg-0.0.1-0.8.tgz#b03f24e21f715117c4412565db0e5ccd396a18eb"
-  integrity sha512-Q4PEitGqGNbIMar6uQxR7BmXkoKu+16vtuRgDB2AaOtOtcC3/16Sfa0VWls3gTuuN/EfUHTPKLwdD9BaG4UZRw==
+"@dataplan/pg@0.0.1-0.9", "@dataplan/pg@^0.0.1-0.9":
+  version "0.0.1-0.9"
+  resolved "https://registry.yarnpkg.com/@dataplan/pg/-/pg-0.0.1-0.9.tgz#e1d93d0c15c100529b344ea8f1d91102e890bbf0"
+  integrity sha512-urdaZ5LjTPd0kkanhuUiZgG68a16X59FoCCJl+y5ztTgXV6N4TjAWrz5y8eRxoBjU3bKJxIf6MkL3YETTOviHA==
   dependencies:
     "@dataplan/json" "^0.0.1-0.6"
     "@graphile/lru" "^5.0.0-0.1"
@@ -556,10 +556,10 @@ grafast@^0.0.1-0.6:
     debug "^4.3.3"
     tamedevil "^0.0.0-0.2"
 
-grafserv@^0.0.1-0.7:
-  version "0.0.1-0.7"
-  resolved "https://registry.yarnpkg.com/grafserv/-/grafserv-0.0.1-0.7.tgz#78471cee0da6111d376790d73b0c9c78271a8882"
-  integrity sha512-SdtV0ZvVQJQypQktG1JGhj6VsIt0JZG1ldAXOQoHOvmU1C8UQWAWfJTFYytd0TS6M/w71cV52yOHTQbJSoogQA==
+grafserv@^0.0.1-0.8:
+  version "0.0.1-0.8"
+  resolved "https://registry.yarnpkg.com/grafserv/-/grafserv-0.0.1-0.8.tgz#fb8ab223ea052cddbb25dd32e6bba82a6941ba06"
+  integrity sha512-6nzZDdVwYmLLvjJnQFQXSxk5psP/E1IMxLW77lr6xAXbmkBuXXX8pAmR0RNGnkk/W7+5GSqc0w6KRYPIJTffLw==
   dependencies:
     "@graphile/lru" "^5.0.0-0.1"
     debug "^4.1.1"
@@ -568,12 +568,12 @@ grafserv@^0.0.1-0.7:
     ruru "^2.0.0-0.5"
     tslib "^2.4.0"
 
-graphile-build-pg@5.0.0-0.9:
-  version "5.0.0-0.9"
-  resolved "https://registry.yarnpkg.com/graphile-build-pg/-/graphile-build-pg-5.0.0-0.9.tgz#08c45985a72c330fa6ddfec319eb31ff26fe87e8"
-  integrity sha512-7RSxah9br56EBmsDBpfko8v48H/jvJ3HUddMpPH0aN2BGCHjjCttzsnloLR3glyf+Wf8rQfQ4TCbthFx9FW0yg==
+graphile-build-pg@5.0.0-0.10:
+  version "5.0.0-0.10"
+  resolved "https://registry.yarnpkg.com/graphile-build-pg/-/graphile-build-pg-5.0.0-0.10.tgz#319530081658a522caaf586d132461ab947b1086"
+  integrity sha512-ApTHgonbR/yDf6h92wEyzGhNN3R7aUqLsHOZjh+aF1aU+uF94ohlETaj+M4YJvS6xWLa5WuqGkOgHiYjdZL2Xg==
   dependencies:
-    "@dataplan/pg" "^0.0.1-0.8"
+    "@dataplan/pg" "^0.0.1-0.9"
     "@types/node" "^16.11.15"
     debug "^4.3.3"
     grafast "^0.0.1-0.6"
@@ -973,20 +973,20 @@ postgraphile-plugin-connection-filter@^3.0.0-0.1:
   dependencies:
     tslib "^2.4.1"
 
-postgraphile@^5.0.0-0.11:
-  version "5.0.0-0.11"
-  resolved "https://registry.yarnpkg.com/postgraphile/-/postgraphile-5.0.0-0.11.tgz#e43b67803c0005e501df35f20b0636a611098051"
-  integrity sha512-O8GxUD1UPmieqYfWWsSb/4pr01c9wV6b7aK94QDjf0i6Aohq+IbHkvi0At3dDA0FjBNe52R1v7NLAf9ihrO2Iw==
+postgraphile@^5.0.0-0.12:
+  version "5.0.0-0.12"
+  resolved "https://registry.yarnpkg.com/postgraphile/-/postgraphile-5.0.0-0.12.tgz#7d956293ca2cad1d5176a696ecb3284842e6bcec"
+  integrity sha512-WroDgHy5U5sd2qzElAj4mjuy4bsJhpFQrRmsXQfyyNJ0cL6cCnU8Udhl4xhh5yaw49sq//WXRj9StbVazhaNkQ==
   dependencies:
-    "@dataplan/pg" "0.0.1-0.8"
+    "@dataplan/pg" "0.0.1-0.9"
     "@graphile/lru" "^5.0.0-0.1"
     "@types/node" "^16.11.15"
     "@types/pg" "^8.6.2"
     debug "^4.3.3"
     grafast "^0.0.1-0.6"
-    grafserv "^0.0.1-0.7"
+    grafserv "^0.0.1-0.8"
     graphile-build "5.0.0-0.7"
-    graphile-build-pg "5.0.0-0.9"
+    graphile-build-pg "5.0.0-0.10"
     graphile-config "^0.0.1-0.2"
     graphile-export "^0.0.2-0.4"
     graphql "16.1.0-experimental-stream-defer.6"
