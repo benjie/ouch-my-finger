@@ -1,5 +1,5 @@
 // @ts-check
-import { makePgSources } from "postgraphile";
+import { makePgConfigs } from "postgraphile";
 import AmberPreset from "postgraphile/presets/amber";
 import { makeV4Preset } from "postgraphile/presets/v4";
 import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connection-filter";
@@ -19,7 +19,7 @@ const preset = {
     PgManyToManyPreset,
     PgAggregatesPreset,
   ],
-  pgSources: makePgSources(
+  pgConfigs: makePgConfigs(
     // Database connection string:
     process.env.DATABASE_URL,
     // List of schemas to expose:
