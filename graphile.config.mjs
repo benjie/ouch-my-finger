@@ -25,10 +25,13 @@ const preset = {
       connectionString: process.env.DATABASE_URL,
       // List of schemas to expose:
       schemas: process.env.DATABASE_SCHEMAS?.split(",") ?? ["public"],
+      // Enable LISTEN/NOTIFY:
+      pubsub: true,
     }),
   ],
   server: {
     port: 5678,
+    websockets: true,
   },
   grafast: {
     explain: true,
