@@ -5,6 +5,7 @@ import { makeV4Preset } from "postgraphile/presets/v4";
 import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connection-filter";
 import { PgAggregatesPreset } from "@graphile/pg-aggregates";
 import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
+// import { PgSimplifyInflectionPreset } from "@graphile/simplify-inflection";
 
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
 
@@ -18,6 +19,7 @@ const preset = {
     PostGraphileConnectionFilterPreset,
     PgManyToManyPreset,
     PgAggregatesPreset,
+    // PgSimplifyInflectionPreset
   ],
   pgConfigs: [
     makePgConfig({
