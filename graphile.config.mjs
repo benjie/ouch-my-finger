@@ -31,7 +31,7 @@ const preset = {
       pubsub: true,
     }),
   ],
-  server: {
+  grafserv: {
     port: 5678,
     websockets: true,
   },
