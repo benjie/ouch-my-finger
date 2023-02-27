@@ -14,12 +14,13 @@ const resolvedPreset = pgl.getResolvedPreset();
 // Create a Grafserv instance using the grafserv/express/v4 adaptor
 const serv = pgl.createServ(grafserv);
 
-// Mount our Grafserv instance into our Express app
-serv.addTo(app);
-
 // Start the Express server
 const port = resolvedPreset.grafserv.port ?? 5678;
 const host = resolvedPreset.grafserv.host ?? "127.0.0.1";
-app.listen(port, host, () => {
+const server = app.listen(port, host, () => {
   console.log(`Server running on http://${host}:${port}/`);
 });
+
+// Mount our Grafserv instance into our Express app, passing the HTTP server so
+// we can attach websocket support.
+serv.addTo(app, server);
