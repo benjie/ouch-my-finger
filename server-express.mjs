@@ -18,8 +18,8 @@ const serv = pgl.createServ(grafserv);
 serv.addTo(app);
 
 // Start the Express server
-const port = resolvedPreset.server.port ?? 5678;
-const host = resolvedPreset.server.host ?? "127.0.0.1";
+const port = resolvedPreset.grafserv.port ?? 5678;
+const host = resolvedPreset.grafserv.host ?? "127.0.0.1";
 app.listen(port, host, () => {
   console.log(`Server running on http://${host}:${port}/`);
 });
