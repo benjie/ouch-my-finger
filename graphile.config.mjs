@@ -15,6 +15,8 @@ const preset = {
     AmberPreset.default ?? AmberPreset,
     makeV4Preset({
       /* Enter your V4 options here */
+      graphiql: true,
+      graphiqlRoute: "/",
     }),
     PostGraphileConnectionFilterPreset,
     PgManyToManyPreset,
