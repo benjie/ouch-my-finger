@@ -15,6 +15,7 @@ const preset = {
     AmberPreset.default ?? AmberPreset,
     makeV4Preset({
       /* Enter your V4 options here */
+      simpleCollections: "both",
       graphiql: true,
       graphiqlRoute: "/",
     }),
