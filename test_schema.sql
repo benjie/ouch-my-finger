@@ -19,21 +19,25 @@ COMMENT ON TABLE test.foo_owns_baz IS $$
 @omit many
 $$;
 
-INSERT INTO test.bar (id) VALUES ('1'), ('2'), ('3'), ('4');
-INSERT INTO test.foo (id, foo_field, bar_id) VALUES
-  ('foo', 'FOO', '1'),
-  ('bar', 'BAR', '2'),
-  ('baz', 'BAZ', '3'),
-  ('qux', 'QUX', '4');
+INSERT INTO test.bar (id)
+  SELECT 'bar' || i::text FROM generate_series(1, 100) i;
 
-INSERT INTO test.baz (id, baz_field) VALUES
-  ('A', 'a'),
-  ('B', 'b'),
-  ('C', 'c'),
-  ('D', 'd');
+INSERT INTO test.foo (id, foo_field, bar_id)
+  SELECT
+    'foo' || i::text,
+    'FOO' || i::text,
+    10001 - i
+  FROM generate_series(1, 10000) i;
 
-INSERT INTO test.foo_owns_baz (subject, object) VALUES
-  ('foo', 'A'),
-  ('bar', 'B'),
-  ('baz', 'C'),
-  ('qux', 'D');
+INSERT INTO test.baz (id, baz_field)
+  SELECT
+    'bar' || i::text,
+    'BAR' || i::text
+  FROM generate_series(1, 100) i;
+
+INSERT INTO test.foo_owns_baz (subject, object)
+  SELECT
+    foo.id,
+    baz.id
+  FROM test.foo, test.baz
+  WHERE RANDOM() > 0.9 OR baz.id IN ('baz1', 'baz10');
