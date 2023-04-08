@@ -11,7 +11,7 @@ $$;
 
 CREATE TABLE test.baz (id text primary key, baz_field text);
 
-CREATE TABLE test.foo_owns_baz (subject text, object text);
+CREATE TABLE test.foo_owns_baz (subject text, object text, foo_owns_baz_detail_1 text, foo_owns_baz_detail_2 text);
 COMMENT ON TABLE test.foo_owns_baz IS $$
 @foreignKey ("subject") references test.foo ("id")|@manyToManySimpleFieldName fooOwnsThis|@foreignSimpleFieldName ownsBazsJoin
 @foreignKey ("object") references test.baz ("id")|@manyToManySimpleFieldName ownsBazs|@foreignSimpleFieldName fooOwnsThis
@@ -35,9 +35,11 @@ INSERT INTO test.baz (id, baz_field)
     'BAR' || i::text
   FROM generate_series(1, 100) i;
 
-INSERT INTO test.foo_owns_baz (subject, object)
+INSERT INTO test.foo_owns_baz (subject, object, foo_owns_baz_detail_1, foo_owns_baz_detail_2)
   SELECT
     foo.id,
-    baz.id
+    baz.id,
+    foo.id || ' | ' || baz.id,
+    random()::text
   FROM test.foo, test.baz
   WHERE RANDOM() > 0.9 OR baz.id IN ('baz1', 'baz10');
