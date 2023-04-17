@@ -5,7 +5,7 @@ import { makeV4Preset } from "postgraphile/presets/v4";
 import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connection-filter";
 import { PgAggregatesPreset } from "@graphile/pg-aggregates";
 import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
-import { ThisPlugin } from "./plugins/ThisPlugin.mjs";
+import { PackagePlugin } from "./plugins/PackagePlugin.mjs";
 
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
 
@@ -14,6 +14,7 @@ const preset = {
   extends: [
     AmberPreset.default ?? AmberPreset,
     makeV4Preset({
+      subscriptions: true,
       /* Enter your V4 options here */
       graphiql: true,
       graphiqlRoute: "/",
@@ -23,7 +24,7 @@ const preset = {
     PgAggregatesPreset,
   ],
   plugins: [
-    ThisPlugin
+    PackagePlugin
   ],
   pgConfigs: [
     makePgConfig({
