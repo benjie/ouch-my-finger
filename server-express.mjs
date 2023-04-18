@@ -1,3 +1,4 @@
+// @ts-check
 import express from "express";
 import { grafserv } from "grafserv/express/v4";
 import { postgraphile } from "postgraphile";
@@ -15,8 +16,8 @@ const resolvedPreset = pgl.getResolvedPreset();
 const serv = pgl.createServ(grafserv);
 
 // Start the Express server
-const port = resolvedPreset.grafserv.port ?? 5678;
-const host = resolvedPreset.grafserv.host ?? "127.0.0.1";
+const port = resolvedPreset.grafserv?.port ?? 5678;
+const host = resolvedPreset.grafserv?.host ?? "127.0.0.1";
 const server = app.listen(port, host, () => {
   console.log(`Server running on http://${host}:${port}/`);
 });

@@ -9,7 +9,7 @@ import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
 
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
 
-/** @type {GraphileConfig.Preset} */
+/** @satisfies {GraphileConfig.Preset} */
 const preset = {
   extends: [
     AmberPreset.default ?? AmberPreset,
