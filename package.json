@@ -12,12 +12,12 @@
     "grafserv": "^0.0.1-1.1",
     "postgraphile": "^5.0.0-1.1",
     "postgraphile-plugin-connection-filter": "^3.0.0-1.0",
-    "ws": "^8.12.1"
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
     "prettier": "^2.8.2",
-    "typescript": "^4.9.4"
+    "typescript": "^5.0.4"
   },
   "prettier": {
     "proseWrap": "always"
