@@ -1,5 +1,5 @@
 // @ts-check
-import { makePgConfig } from "@dataplan/pg/adaptors/pg";
+import { makePgService } from "@dataplan/pg/adaptors/pg";
 import AmberPreset from "postgraphile/presets/amber";
 import { makeV4Preset } from "postgraphile/presets/v4";
 import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connection-filter";
@@ -23,8 +23,8 @@ const preset = {
     PgAggregatesPreset,
     // PgSimplifyInflectionPreset
   ],
-  pgConfigs: [
-    makePgConfig({
+  pgServices: [
+    makePgService({
       // Database connection string:
       connectionString: process.env.DATABASE_URL,
       // List of schemas to expose:
