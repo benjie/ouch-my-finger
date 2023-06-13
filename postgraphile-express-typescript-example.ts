@@ -1,5 +1,5 @@
-// Run this with `npx ts-node --esm postgraphile-express-typescript-example.mts`
-import preset from "./graphile.config.mjs";
+// Run this with `npx ts-node postgraphile-express-typescript-example.ts`
+import preset from "./graphile.config.js";
 import { postgraphile } from "postgraphile";
 
 // Our PostGraphile instance:

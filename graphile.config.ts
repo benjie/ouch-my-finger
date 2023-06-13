@@ -1,4 +1,3 @@
-// @ts-check
 import { makePgService } from "@dataplan/pg/adaptors/pg";
 import AmberPreset from "postgraphile/presets/amber";
 import { makeV4Preset } from "postgraphile/presets/v4";
@@ -12,7 +11,7 @@ import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
 /** @satisfies {GraphileConfig.Preset} */
 const preset = {
   extends: [
-    AmberPreset.default ?? AmberPreset,
+    AmberPreset,
     makeV4Preset({
       /* Enter your V4 options here */
       graphiql: true,

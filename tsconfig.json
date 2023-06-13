@@ -3,7 +3,10 @@
   "compilerOptions": {
     "allowJs": true,
     "target": "es2022",
-    "module": "es2022",
+    "module": "commonjs",
     "moduleResolution": "NodeNext"
+  },
+  "ts-node": {
+    "experimentalResolver": true
   }
 }
