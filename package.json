@@ -5,13 +5,13 @@
     "postgraphile": "postgraphile"
   },
   "dependencies": {
-    "@graphile-contrib/pg-many-to-many": "^2.0.0-alpha.0",
-    "@graphile/pg-aggregates": "^0.2.0-alpha.1",
+    "@graphile-contrib/pg-many-to-many": "^2.0.0-alpha.1",
+    "@graphile/pg-aggregates": "^0.2.0-alpha.2",
     "@graphile/simplify-inflection": "^8.0.0-alpha.3",
     "express": "^4.18.2",
-    "grafserv": "^0.0.1-alpha.9",
-    "postgraphile": "^5.0.0-alpha.11",
-    "postgraphile-plugin-connection-filter": "^3.0.0-alpha.1",
+    "graphile-utils": "^5.0.0-alpha.12",
+    "postgraphile": "^5.0.0-alpha.12",
+    "postgraphile-plugin-connection-filter": "^3.0.0-alpha.2",
     "ws": "^8.13.0"
   },
   "devDependencies": {
