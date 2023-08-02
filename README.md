@@ -4,13 +4,6 @@
 https://grafast.org/caveats/ and wear appropriate personal protective equipment
 to protect your fingers from the sharp edges!
 
-Note to use this repo you will need to know the secret from
-https://grafast.org/caveats/ - which means you'll need to be a sponsor. If
-you're already a sponsor, ping Jem
-([on the Graphile Discord](https://discord.gg/graphile),
-[via Twitter](https://twitter.com/jemgillam), or via email on their first name
-at graphile.com) and they'll help you get set up.
-
 ## Quickstart
 
 Install dependencies:
