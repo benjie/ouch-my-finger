@@ -9,6 +9,7 @@
     "@graphile/pg-aggregates": "^0.2.0-alpha.5",
     "@graphile/simplify-inflection": "^8.0.0-alpha.4",
     "express": "^4.18.2",
+    "graphile": "^5.0.0-alpha.13",
     "graphile-utils": "^5.0.0-alpha.20",
     "postgraphile": "^5.0.0-alpha.20",
     "postgraphile-plugin-connection-filter": "^3.0.0-alpha.4",
