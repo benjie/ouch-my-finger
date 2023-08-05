@@ -1,6 +1,6 @@
 // @ts-check
 import express from "express";
-import { grafserv } from "grafserv/express/v4";
+import { grafserv } from "postgraphile/grafserv/express/v4";
 import { postgraphile } from "postgraphile";
 import preset from "./graphile.config.mjs";
 
