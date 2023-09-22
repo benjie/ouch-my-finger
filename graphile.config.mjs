@@ -2,26 +2,37 @@
 import { makePgService } from "@dataplan/pg/adaptors/pg";
 import AmberPreset from "postgraphile/presets/amber";
 import { makeV4Preset } from "postgraphile/presets/v4";
-import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connection-filter";
-import { PgAggregatesPreset } from "@graphile/pg-aggregates";
-import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
-// import { PgSimplifyInflectionPreset } from "@graphile/simplify-inflection";
 
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
+
+import { gql, makeExtendSchemaPlugin } from 'postgraphile/utils';
+
+
+const Pharmacy = makeExtendSchemaPlugin(() => {
+	return {
+		typeDefs: gql`
+			interface IPharmacy {
+				id: String!
+			}
+
+			type Pharmacy implements IPharmacy {
+				id: String!
+			}
+		`,
+	};
+});
+
 
 /** @satisfies {GraphileConfig.Preset} */
 const preset = {
   extends: [
-    AmberPreset.default ?? AmberPreset,
+    AmberPreset.default,
     makeV4Preset({
       /* Enter your V4 options here */
       graphiql: true,
       graphiqlRoute: "/",
+      appendPlugins: [Pharmacy]
     }),
-    PostGraphileConnectionFilterPreset,
-    PgManyToManyPreset,
-    PgAggregatesPreset,
-    // PgSimplifyInflectionPreset
   ],
   pgServices: [
     makePgService({
