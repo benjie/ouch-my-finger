@@ -17,17 +17,17 @@
     chalk "^4.1.2"
     tslib "^2.6.2"
 
-"@dataplan/pg@0.0.1-beta.9":
-  version "0.0.1-beta.9"
-  resolved "https://registry.yarnpkg.com/@dataplan/pg/-/pg-0.0.1-beta.9.tgz#02e411896e04e6d1eab88f9b2ba681221a9f2a28"
-  integrity sha512-T4MEuM57GRwx4IGwIh3jSwSfa9oE2S9l0ZAkCN2po3KZ3REETqPJMHX/9kMoWDsIvRPRdLa4eL0XWr851hq++w==
+"@dataplan/pg@0.0.1-beta.10":
+  version "0.0.1-beta.10"
+  resolved "https://registry.yarnpkg.com/@dataplan/pg/-/pg-0.0.1-beta.10.tgz#cd51a56f2f7a5e64d3ba5b95d1587ddce4246b5a"
+  integrity sha512-hXh7fojgWxVjOhX3pj8lh+lW4VCbXJ07O/M2+pXzFEy836HGCegEY9iDoBzcL5EIBaeCNiUNW6k7TbvonYT4qg==
   dependencies:
     "@graphile/lru" "^5.0.0-beta.3"
     "@types/node" "^20.5.7"
     chalk "^4.1.2"
     debug "^4.3.4"
     eventemitter3 "^5.0.1"
-    pg-sql2 "^5.0.0-beta.3"
+    pg-sql2 "^5.0.0-beta.4"
     postgres-array "~3.0.2"
     postgres-range "^1.1.3"
     tslib "^2.6.2"
@@ -519,10 +519,10 @@ grafserv@^0.1.1-beta.0:
     ruru "^2.0.0-beta.5"
     tslib "^2.6.2"
 
-graphile-build-pg@5.0.0-beta.11:
-  version "5.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/graphile-build-pg/-/graphile-build-pg-5.0.0-beta.11.tgz#e9e5b9d68e83e371246e2216a7accdfe9bf7e575"
-  integrity sha512-G3cz1sZnvuIY5m397h7ILpAhRr0hrShqJ8Xq9ptomAFjc7Hv2/xIRKzwz8qQqSmRY9ErCzbL1pDEs12GvlLVPQ==
+graphile-build-pg@5.0.0-beta.12:
+  version "5.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/graphile-build-pg/-/graphile-build-pg-5.0.0-beta.12.tgz#5f9a25d2cdb0a3f19b6f169630099b54c1c437cd"
+  integrity sha512-Cnq0Zjm66davdwUoweVTymYiRFvQHUCkRnU4yAScXJcYp+E/UtThPr5kJPLjx14pfTDuaaB7S1VCw4gEJ41mCQ==
   dependencies:
     "@types/node" "^20.5.7"
     debug "^4.3.4"
@@ -563,19 +563,19 @@ graphile-config@^0.0.1-beta.3:
     tslib "^2.6.2"
     yargs "^17.7.2"
 
-graphile-utils@^5.0.0-beta.11:
-  version "5.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/graphile-utils/-/graphile-utils-5.0.0-beta.11.tgz#a8cf289090cf8e2911759b9ed1c5309b50ff9ae9"
-  integrity sha512-KY7nqPcg4SuK/oR+fga/8tJF+K3wqfiql5j4CkD68NcXXA1u9JO2Trl1m5ygS78oBG6d28Ar65hESjD9cV50Iw==
+graphile-utils@^5.0.0-beta.12:
+  version "5.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/graphile-utils/-/graphile-utils-5.0.0-beta.12.tgz#29cf44794175ae2da0028b4110120a2ee9853ca2"
+  integrity sha512-DcRj7DouvIZtHA1xeDpEwAPl7uOCFoUxDBdiITFTkhn9QWYHno1K2+n7u4QexyAJk0QL7udWOsUHEVO83119lg==
   dependencies:
     debug "^4.3.4"
     json5 "^2.2.3"
     tslib "^2.6.2"
 
-graphile@^5.0.0-beta.12:
-  version "5.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/graphile/-/graphile-5.0.0-beta.12.tgz#c10e7efd3bbf98cd876bb9681cf641ca3259a360"
-  integrity sha512-LkaMSzL/2VQnMphmvOgitnb2NoxWmWJlUnVucTOSkX3Pvn4EvkEFxg9BLRsxZrJlatFVR8jLRBn6YiCIMfcTdw==
+graphile@^5.0.0-beta.13:
+  version "5.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/graphile/-/graphile-5.0.0-beta.13.tgz#b1262298d1bbbc596ff2ae07dd16b31b8beeac32"
+  integrity sha512-AbydhNmCgLPks6poHDqKiU3LnFIb3pwA7rebKbRLKyn0QuURJGllLYm95DLUJqoQGDQ3mO94QBhT+dxICvQ0hw==
   dependencies:
     "@typescript/vfs" "^1.5.0"
     chalk "^4.1.2"
@@ -873,10 +873,10 @@ pg-protocol@*, pg-protocol@^1.6.0:
   resolved "https://registry.yarnpkg.com/pg-protocol/-/pg-protocol-1.6.0.tgz#4c91613c0315349363af2084608db843502f8833"
   integrity sha512-M+PDm637OY5WM307051+bsDia5Xej6d9IR4GwJse1qA1DIhiKlksvrneZOYQq42OM+spubpcNYEo2FcKQrDk+Q==
 
-pg-sql2@^5.0.0-beta.3:
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/pg-sql2/-/pg-sql2-5.0.0-beta.3.tgz#fd61c0f614777a7360ff99101562e2f6aa4a62ba"
-  integrity sha512-l4kkLECDRzgOxFMDJQVup89aWx44kbGjXl05sLAmHzZ0T/Er+L55DKfU+xmnZ3/ORl5Es0xdOhKUF6/NVZ7d3Q==
+pg-sql2@^5.0.0-beta.4:
+  version "5.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/pg-sql2/-/pg-sql2-5.0.0-beta.4.tgz#fe71b762012ed565788e7f7e69e888c0c198efd7"
+  integrity sha512-KR6GKB/DweJqSacm3ZzYihoGoW3HPW3o0/ExCuOVI4Ijb1vgW/JB8KVM6OOAVkogn5xvhFSRQkom9LnZw0j76A==
   dependencies:
     "@graphile/lru" "^5.0.0-beta.3"
     tslib "^2.6.2"
@@ -939,13 +939,13 @@ postgraphile-plugin-connection-filter@^3.0.0-beta.1:
   dependencies:
     tslib "^2.5.0"
 
-postgraphile@^5.0.0-beta.12:
-  version "5.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/postgraphile/-/postgraphile-5.0.0-beta.12.tgz#0ac3036f9278c18bf4b974f5a85816d290f4e826"
-  integrity sha512-aqK4MVJCBIf8onvd9gVzrqCNzUKSR6ujsETPFR2ZIppE1jKJDkW8GGTxlHOjdOlekCD778pwc7x6iRPGSXXxrA==
+postgraphile@^5.0.0-beta.13:
+  version "5.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/postgraphile/-/postgraphile-5.0.0-beta.13.tgz#c3e8a9b22f3ac17be91ac3bbd0fc1a0715e7de1a"
+  integrity sha512-lzqv0/vRz40U9MAE4kG+HAMvYQnlxFPG9ZmjR1pD1wExtLKDOqFsf3khM3gXd0h+j3TH1jauTst3BKvsatXGbg==
   dependencies:
     "@dataplan/json" "0.0.1-beta.9"
-    "@dataplan/pg" "0.0.1-beta.9"
+    "@dataplan/pg" "0.0.1-beta.10"
     "@graphile/lru" "^5.0.0-beta.3"
     "@types/node" "^20.5.7"
     "@types/pg" "^8.10.2"
@@ -953,14 +953,14 @@ postgraphile@^5.0.0-beta.12:
     grafast "^0.1.1-beta.0"
     grafserv "^0.1.1-beta.0"
     graphile-build "5.0.0-beta.10"
-    graphile-build-pg "5.0.0-beta.11"
+    graphile-build-pg "5.0.0-beta.12"
     graphile-config "^0.0.1-beta.3"
-    graphile-utils "^5.0.0-beta.11"
+    graphile-utils "^5.0.0-beta.12"
     graphql "^16.1.0-experimental-stream-defer.6"
     iterall "^1.3.0"
     jsonwebtoken "^9.0.2"
     pg "^8.11.3"
-    pg-sql2 "^5.0.0-beta.3"
+    pg-sql2 "^5.0.0-beta.4"
     tamedevil "^0.0.0-beta.3"
     tslib "^2.6.2"
     ws "^8.13.0"
