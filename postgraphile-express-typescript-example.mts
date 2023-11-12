@@ -7,7 +7,7 @@ export const pgl = postgraphile(preset);
 
 import { createServer } from "node:http";
 import express from "express";
-import { grafserv } from "grafserv/express/v4";
+import { grafserv } from "postgraphile/grafserv/express/v4";
 
 const serv = pgl.createServ(grafserv);
 
