@@ -5,9 +5,29 @@ import { makeV4Preset } from "postgraphile/presets/v4";
 import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connection-filter";
 import { PgAggregatesPreset } from "@graphile/pg-aggregates";
 import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
+import { makeWrapPlansPlugin } from "graphile-utils";
+import { lambda } from "postgraphile/grafast";
 // import { PgSimplifyInflectionPreset } from "@graphile/simplify-inflection";
 
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
+
+const BrokenExample = makeWrapPlansPlugin({
+  Mutation: {
+    createTest(plan, _$source, fieldArgs) {
+      const $test = fieldArgs.get(["input", "test" ]);
+
+      const $payload = plan();
+      const $insert = $payload.get("result");
+      const $testDep = lambda(
+        $test,
+        (test) => ({"test": "bad"}),
+        true,
+      );
+      $insert.set("dep", $testDep);
+    },
+  }}
+);
+
 
 /** @satisfies {GraphileConfig.Preset} */
 const preset = {
@@ -22,6 +42,9 @@ const preset = {
     PgManyToManyPreset,
     PgAggregatesPreset,
     // PgSimplifyInflectionPreset
+  ],
+  plugins: [
+    BrokenExample,
   ],
   pgServices: [
     makePgService({
