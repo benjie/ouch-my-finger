@@ -1,0 +1,15 @@
+{
+  version: 1,
+  config: {
+    class: {
+      conversations_with_recent_messages: {
+        tags: {
+          foreignKey: [
+            "(conversation_id) references conversations (id)",
+            "(message_id) references messages (id)",
+          ],
+        },
+      },
+    },
+  },
+}
