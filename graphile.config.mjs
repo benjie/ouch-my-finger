@@ -8,8 +8,11 @@ import { TagsFilePlugin } from "postgraphile/utils";
 
 /** @satisfies {GraphileConfig.Preset} */
 const preset = {
-  plugins: [TagsFilePlugin],
   extends: [PostGraphileAmberPreset, PgSimplifyInflectionPreset],
+  plugins: [
+    TagsFilePlugin,
+    { name: "workaround", version: "0.0.0", provides: ["smart-tags"] },
+  ],
   pgServices: [
     makePgService({
       connectionString: "postgres:///mrjack",
