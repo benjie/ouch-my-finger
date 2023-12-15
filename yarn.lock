@@ -44,10 +44,23 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.8.1.tgz#c1ddb040429c6d21d38cc945fe75c818cfb68e17"
   integrity sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==
 
+"@grafserv/persisted@^0.0.0-beta.14":
+  version "0.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@grafserv/persisted/-/persisted-0.0.0-beta.14.tgz#9f35d74f9b14e73819b7ca527e77342a626dd355"
+  integrity sha512-09GO6ZOoIv12/NZcdGOet6LAL2JBUkB62Xttj1EgX0CU2SrfXOWKFmS2gWhCeVgHrhh0rAiUc7KfoQUVH/6oUw==
+  dependencies:
+    "@graphile/lru" "^5.0.0-beta.3"
+    tslib "^2.6.2"
+
 "@graphile-contrib/pg-many-to-many@^2.0.0-beta.1":
   version "2.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@graphile-contrib/pg-many-to-many/-/pg-many-to-many-2.0.0-beta.1.tgz#419e7a8d6cf239c0e1c23aa1fd8a90009476b42c"
   integrity sha512-Nq427BojYFZ7Pi61b3m0nnYuGvtArLUw6HcwmvpckNXUuoDxb1V7iV/KbK8FttIq/VEmSaR+ts7yx6dCZZEpWg==
+
+"@graphile-contrib/pg-omit-archived@^4.0.0-beta.1":
+  version "4.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@graphile-contrib/pg-omit-archived/-/pg-omit-archived-4.0.0-beta.2.tgz#3ef08180c7a2a5a72d4540d07ebd9f545395698f"
+  integrity sha512-CxiXWcwxbVTNvMRU7WJOJDySHtXAtOzKMf3pT6kVPboCuLiUFVFvMtFuxS80to57DygfY/cy2iSpB/8EtOF/7w==
 
 "@graphile/lru@^5.0.0-beta.3":
   version "5.0.0-beta.3"

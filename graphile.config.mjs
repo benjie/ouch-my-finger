@@ -6,6 +6,8 @@ import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connecti
 import { PgAggregatesPreset } from "@graphile/pg-aggregates";
 import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
 // import { PgSimplifyInflectionPreset } from "@graphile/simplify-inflection";
+import PersistedPlugin from "@grafserv/persisted";
+import { PgOmitArchivedPlugin } from "@graphile-contrib/pg-omit-archived";
 
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
 
@@ -23,6 +25,7 @@ const preset = {
     PgAggregatesPreset,
     // PgSimplifyInflectionPreset
   ],
+  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin],
   pgServices: [
     makePgService({
       // Database connection string:
@@ -36,6 +39,7 @@ const preset = {
   grafserv: {
     port: 5678,
     websockets: true,
+    allowUnpersistedOperation: true,
   },
   grafast: {
     explain: true,
