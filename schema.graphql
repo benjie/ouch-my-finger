@@ -1,0 +1,1201 @@
+"""
+A signed eight-byte integer. The upper big integer values are greater than the
+max value for a JavaScript number. Therefore all big integers will be output as
+strings and not numbers.
+"""
+scalar BigInt
+
+"""A location in a connection that can be used for resuming pagination."""
+scalar Cursor
+
+"""
+A point in time as described by the [ISO
+8601](https://en.wikipedia.org/wiki/ISO_8601) and, if it has a timezone, [RFC
+3339](https://datatracker.ietf.org/doc/html/rfc3339) standards. Input values
+that do not conform to both ISO 8601 and RFC 3339 may be coerced, which may lead
+to unexpected results.
+"""
+scalar Datetime
+
+"""
+A filter to be used against Datetime fields. All fields are combined with a logical ‘and.’
+"""
+input DatetimeFilter {
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: Datetime
+
+  """Equal to the specified value."""
+  equalTo: Datetime
+
+  """Greater than the specified value."""
+  greaterThan: Datetime
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: Datetime
+
+  """Included in the specified list."""
+  in: [Datetime!]
+
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Less than the specified value."""
+  lessThan: Datetime
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: Datetime
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: Datetime
+
+  """Not equal to the specified value."""
+  notEqualTo: Datetime
+
+  """Not included in the specified list."""
+  notIn: [Datetime!]
+}
+
+"""A connection to a list of `Entity` values."""
+type EntitiesConnection {
+  """
+  Aggregates across the matching connection (ignoring before/after/first/last/offset)
+  """
+  aggregates: EntityAggregates
+
+  """
+  A list of edges which contains the `Entity` and cursor to aid in pagination.
+  """
+  edges: [EntitiesEdge]!
+
+  """
+  Grouped aggregates across the matching connection (ignoring before/after/first/last/offset)
+  """
+  groupedAggregates(
+    """The method to use when grouping `Entity` for these aggregates."""
+    groupBy: [EntityGroupBy!]!
+
+    """Conditions on the grouped aggregates."""
+    having: EntityHavingInput
+  ): [EntityAggregates!]
+
+  """A list of `Entity` objects."""
+  nodes: [Entity]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Entity` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Entity` edge in the connection."""
+type EntitiesEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Entity` at the end of the edge."""
+  node: Entity
+}
+
+"""Methods to use when ordering `Entity`."""
+enum EntitiesOrderBy {
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  NATURAL
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+  TYPE_ASC
+  TYPE_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  WEBSITE_URL_ASC
+  WEBSITE_URL_DESC
+}
+
+interface Entity implements Node {
+  createdAt: Datetime!
+
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+  type: EntityType!
+  updatedAt: Datetime!
+  websiteUrl: String
+}
+
+type EntityAggregates {
+  """
+  Distinct count aggregates across the matching connection (ignoring before/after/first/last/offset)
+  """
+  distinctCount: EntityDistinctCountAggregates
+  keys: [String!]
+}
+
+"""
+A condition to be used against `Entity` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input EntityCondition {
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+
+  """Checks for equality with the object’s `type` field."""
+  type: EntityType
+
+  """Checks for equality with the object’s `updatedAt` field."""
+  updatedAt: Datetime
+
+  """Checks for equality with the object’s `websiteUrl` field."""
+  websiteUrl: String
+}
+
+type EntityDistinctCountAggregates {
+  """Distinct count of createdAt across the matching connection"""
+  createdAt: BigInt
+
+  """Distinct count of rowId across the matching connection"""
+  rowId: BigInt
+
+  """Distinct count of type across the matching connection"""
+  type: BigInt
+
+  """Distinct count of updatedAt across the matching connection"""
+  updatedAt: BigInt
+
+  """Distinct count of websiteUrl across the matching connection"""
+  websiteUrl: BigInt
+}
+
+"""
+A filter to be used against `Entity` object types. All fields are combined with a logical ‘and.’
+"""
+input EntityFilter {
+  """Checks for all expressions in this list."""
+  and: [EntityFilter!]
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Negates the expression."""
+  not: EntityFilter
+
+  """Checks for any expressions in this list."""
+  or: [EntityFilter!]
+
+  """Filter by the object’s `organization` relation."""
+  organization: OrganizationFilter
+
+  """A related `organization` exists."""
+  organizationExists: Boolean
+
+  """Filter by the object’s `person` relation."""
+  person: PersonFilter
+
+  """A related `person` exists."""
+  personExists: Boolean
+
+  """Filter by the object’s `rowId` field."""
+  rowId: UUIDFilter
+
+  """Filter by the object’s `type` field."""
+  type: EntityTypeFilter
+
+  """Filter by the object’s `updatedAt` field."""
+  updatedAt: DatetimeFilter
+
+  """Filter by the object’s `websiteUrl` field."""
+  websiteUrl: StringFilter
+}
+
+"""Grouping methods for `Entity` for usage during aggregation."""
+enum EntityGroupBy {
+  CREATED_AT
+  CREATED_AT_TRUNCATED_TO_DAY
+  CREATED_AT_TRUNCATED_TO_HOUR
+  TYPE
+  UPDATED_AT
+  UPDATED_AT_TRUNCATED_TO_DAY
+  UPDATED_AT_TRUNCATED_TO_HOUR
+  WEBSITE_URL
+}
+
+input EntityHavingAverageInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input EntityHavingDistinctCountInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+"""Conditions for `Entity` aggregates."""
+input EntityHavingInput {
+  AND: [EntityHavingInput!]
+  OR: [EntityHavingInput!]
+  average: EntityHavingAverageInput
+  distinctCount: EntityHavingDistinctCountInput
+  max: EntityHavingMaxInput
+  min: EntityHavingMinInput
+  stddevPopulation: EntityHavingStddevPopulationInput
+  stddevSample: EntityHavingStddevSampleInput
+  sum: EntityHavingSumInput
+  variancePopulation: EntityHavingVariancePopulationInput
+  varianceSample: EntityHavingVarianceSampleInput
+}
+
+input EntityHavingMaxInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input EntityHavingMinInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input EntityHavingStddevPopulationInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input EntityHavingStddevSampleInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input EntityHavingSumInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input EntityHavingVariancePopulationInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input EntityHavingVarianceSampleInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+enum EntityType {
+  ORGANIZATION
+  PERSON
+}
+
+"""
+A filter to be used against EntityType fields. All fields are combined with a logical ‘and.’
+"""
+input EntityTypeFilter {
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: EntityType
+
+  """Equal to the specified value."""
+  equalTo: EntityType
+
+  """Greater than the specified value."""
+  greaterThan: EntityType
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: EntityType
+
+  """Included in the specified list."""
+  in: [EntityType!]
+
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Less than the specified value."""
+  lessThan: EntityType
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: EntityType
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: EntityType
+
+  """Not equal to the specified value."""
+  notEqualTo: EntityType
+
+  """Not included in the specified list."""
+  notIn: [EntityType!]
+}
+
+input HavingDatetimeFilter {
+  equalTo: Datetime
+  greaterThan: Datetime
+  greaterThanOrEqualTo: Datetime
+  lessThan: Datetime
+  lessThanOrEqualTo: Datetime
+  notEqualTo: Datetime
+}
+
+"""An object with a globally unique `ID`."""
+interface Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+}
+
+type Organization implements Entity & Node {
+  createdAt: Datetime!
+
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+  legalName: String!
+
+  """Reads a single `Organization` that is related to this `Organization`."""
+  organization: Organization
+
+  """Reads a single `Person` that is related to this `Organization`."""
+  person: Person
+  shortName: String
+  type: EntityType!
+  updatedAt: Datetime!
+  websiteUrl: String
+}
+
+type OrganizationAggregates {
+  """
+  Distinct count aggregates across the matching connection (ignoring before/after/first/last/offset)
+  """
+  distinctCount: OrganizationDistinctCountAggregates
+  keys: [String!]
+}
+
+"""
+A condition to be used against `Organization` object types. All fields are
+tested for equality and combined with a logical ‘and.’
+"""
+input OrganizationCondition {
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+  entity: ID
+
+  """Checks for equality with the object’s `legalName` field."""
+  legalName: String
+
+  """Checks for equality with the object’s `shortName` field."""
+  shortName: String
+
+  """Checks for equality with the object’s `type` field."""
+  type: EntityType
+
+  """Checks for equality with the object’s `updatedAt` field."""
+  updatedAt: Datetime
+
+  """Checks for equality with the object’s `websiteUrl` field."""
+  websiteUrl: String
+}
+
+type OrganizationDistinctCountAggregates {
+  """Distinct count of createdAt across the matching connection"""
+  createdAt: BigInt
+
+  """Distinct count of legalName across the matching connection"""
+  legalName: BigInt
+
+  """Distinct count of rowId across the matching connection"""
+  rowId: BigInt
+
+  """Distinct count of shortName across the matching connection"""
+  shortName: BigInt
+
+  """Distinct count of type across the matching connection"""
+  type: BigInt
+
+  """Distinct count of updatedAt across the matching connection"""
+  updatedAt: BigInt
+
+  """Distinct count of websiteUrl across the matching connection"""
+  websiteUrl: BigInt
+}
+
+"""
+A filter to be used against `Organization` object types. All fields are combined with a logical ‘and.’
+"""
+input OrganizationFilter {
+  """Checks for all expressions in this list."""
+  and: [OrganizationFilter!]
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Filter by the object’s `entity` relation."""
+  entity: EntityFilter
+
+  """Filter by the object’s `legalName` field."""
+  legalName: StringFilter
+
+  """Negates the expression."""
+  not: OrganizationFilter
+
+  """Checks for any expressions in this list."""
+  or: [OrganizationFilter!]
+
+  """Filter by the object’s `rowId` field."""
+  rowId: UUIDFilter
+
+  """Filter by the object’s `shortName` field."""
+  shortName: StringFilter
+
+  """Filter by the object’s `type` field."""
+  type: EntityTypeFilter
+
+  """Filter by the object’s `updatedAt` field."""
+  updatedAt: DatetimeFilter
+
+  """Filter by the object’s `websiteUrl` field."""
+  websiteUrl: StringFilter
+}
+
+"""Grouping methods for `Organization` for usage during aggregation."""
+enum OrganizationGroupBy {
+  CREATED_AT
+  CREATED_AT_TRUNCATED_TO_DAY
+  CREATED_AT_TRUNCATED_TO_HOUR
+  LEGAL_NAME
+  SHORT_NAME
+  TYPE
+  UPDATED_AT
+  UPDATED_AT_TRUNCATED_TO_DAY
+  UPDATED_AT_TRUNCATED_TO_HOUR
+  WEBSITE_URL
+}
+
+input OrganizationHavingAverageInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input OrganizationHavingDistinctCountInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+"""Conditions for `Organization` aggregates."""
+input OrganizationHavingInput {
+  AND: [OrganizationHavingInput!]
+  OR: [OrganizationHavingInput!]
+  average: OrganizationHavingAverageInput
+  distinctCount: OrganizationHavingDistinctCountInput
+  max: OrganizationHavingMaxInput
+  min: OrganizationHavingMinInput
+  stddevPopulation: OrganizationHavingStddevPopulationInput
+  stddevSample: OrganizationHavingStddevSampleInput
+  sum: OrganizationHavingSumInput
+  variancePopulation: OrganizationHavingVariancePopulationInput
+  varianceSample: OrganizationHavingVarianceSampleInput
+}
+
+input OrganizationHavingMaxInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input OrganizationHavingMinInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input OrganizationHavingStddevPopulationInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input OrganizationHavingStddevSampleInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input OrganizationHavingSumInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input OrganizationHavingVariancePopulationInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input OrganizationHavingVarianceSampleInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+"""A connection to a list of `Organization` values."""
+type OrganizationsConnection {
+  """
+  Aggregates across the matching connection (ignoring before/after/first/last/offset)
+  """
+  aggregates: OrganizationAggregates
+
+  """
+  A list of edges which contains the `Organization` and cursor to aid in pagination.
+  """
+  edges: [OrganizationsEdge]!
+
+  """
+  Grouped aggregates across the matching connection (ignoring before/after/first/last/offset)
+  """
+  groupedAggregates(
+    """The method to use when grouping `Organization` for these aggregates."""
+    groupBy: [OrganizationGroupBy!]!
+
+    """Conditions on the grouped aggregates."""
+    having: OrganizationHavingInput
+  ): [OrganizationAggregates!]
+
+  """A list of `Organization` objects."""
+  nodes: [Organization]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Organization` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Organization` edge in the connection."""
+type OrganizationsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Organization` at the end of the edge."""
+  node: Organization
+}
+
+"""Methods to use when ordering `Organization`."""
+enum OrganizationsOrderBy {
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  LEGAL_NAME_ASC
+  LEGAL_NAME_DESC
+  NATURAL
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+  SHORT_NAME_ASC
+  SHORT_NAME_DESC
+  TYPE_ASC
+  TYPE_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  WEBSITE_URL_ASC
+  WEBSITE_URL_DESC
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: Cursor
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: Cursor
+}
+
+"""A connection to a list of `Person` values."""
+type PeopleConnection {
+  """
+  Aggregates across the matching connection (ignoring before/after/first/last/offset)
+  """
+  aggregates: PersonAggregates
+
+  """
+  A list of edges which contains the `Person` and cursor to aid in pagination.
+  """
+  edges: [PeopleEdge]!
+
+  """
+  Grouped aggregates across the matching connection (ignoring before/after/first/last/offset)
+  """
+  groupedAggregates(
+    """The method to use when grouping `Person` for these aggregates."""
+    groupBy: [PersonGroupBy!]!
+
+    """Conditions on the grouped aggregates."""
+    having: PersonHavingInput
+  ): [PersonAggregates!]
+
+  """A list of `Person` objects."""
+  nodes: [Person]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Person` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Person` edge in the connection."""
+type PeopleEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Person` at the end of the edge."""
+  node: Person
+}
+
+"""Methods to use when ordering `Person`."""
+enum PeopleOrderBy {
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  FIRST_NAME_ASC
+  FIRST_NAME_DESC
+  LAST_NAME_ASC
+  LAST_NAME_DESC
+  MIDDLE_NAME_ASC
+  MIDDLE_NAME_DESC
+  NATURAL
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+  SUFFIX_ASC
+  SUFFIX_DESC
+  TYPE_ASC
+  TYPE_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  WEBSITE_URL_ASC
+  WEBSITE_URL_DESC
+}
+
+type Person implements Entity & Node {
+  createdAt: Datetime!
+  firstName: String!
+
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+  lastName: String
+  middleName: String
+
+  """Reads a single `Organization` that is related to this `Person`."""
+  organization: Organization
+
+  """Reads a single `Person` that is related to this `Person`."""
+  person: Person
+  suffix: String
+  type: EntityType!
+  updatedAt: Datetime!
+  websiteUrl: String
+}
+
+type PersonAggregates {
+  """
+  Distinct count aggregates across the matching connection (ignoring before/after/first/last/offset)
+  """
+  distinctCount: PersonDistinctCountAggregates
+  keys: [String!]
+}
+
+"""
+A condition to be used against `Person` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input PersonCondition {
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+  entity: ID
+
+  """Checks for equality with the object’s `firstName` field."""
+  firstName: String
+
+  """Checks for equality with the object’s `lastName` field."""
+  lastName: String
+
+  """Checks for equality with the object’s `middleName` field."""
+  middleName: String
+
+  """Checks for equality with the object’s `suffix` field."""
+  suffix: String
+
+  """Checks for equality with the object’s `type` field."""
+  type: EntityType
+
+  """Checks for equality with the object’s `updatedAt` field."""
+  updatedAt: Datetime
+
+  """Checks for equality with the object’s `websiteUrl` field."""
+  websiteUrl: String
+}
+
+type PersonDistinctCountAggregates {
+  """Distinct count of createdAt across the matching connection"""
+  createdAt: BigInt
+
+  """Distinct count of firstName across the matching connection"""
+  firstName: BigInt
+
+  """Distinct count of lastName across the matching connection"""
+  lastName: BigInt
+
+  """Distinct count of middleName across the matching connection"""
+  middleName: BigInt
+
+  """Distinct count of rowId across the matching connection"""
+  rowId: BigInt
+
+  """Distinct count of suffix across the matching connection"""
+  suffix: BigInt
+
+  """Distinct count of type across the matching connection"""
+  type: BigInt
+
+  """Distinct count of updatedAt across the matching connection"""
+  updatedAt: BigInt
+
+  """Distinct count of websiteUrl across the matching connection"""
+  websiteUrl: BigInt
+}
+
+"""
+A filter to be used against `Person` object types. All fields are combined with a logical ‘and.’
+"""
+input PersonFilter {
+  """Checks for all expressions in this list."""
+  and: [PersonFilter!]
+
+  """Filter by the object’s `createdAt` field."""
+  createdAt: DatetimeFilter
+
+  """Filter by the object’s `entity` relation."""
+  entity: EntityFilter
+
+  """Filter by the object’s `firstName` field."""
+  firstName: StringFilter
+
+  """Filter by the object’s `lastName` field."""
+  lastName: StringFilter
+
+  """Filter by the object’s `middleName` field."""
+  middleName: StringFilter
+
+  """Negates the expression."""
+  not: PersonFilter
+
+  """Checks for any expressions in this list."""
+  or: [PersonFilter!]
+
+  """Filter by the object’s `rowId` field."""
+  rowId: UUIDFilter
+
+  """Filter by the object’s `suffix` field."""
+  suffix: StringFilter
+
+  """Filter by the object’s `type` field."""
+  type: EntityTypeFilter
+
+  """Filter by the object’s `updatedAt` field."""
+  updatedAt: DatetimeFilter
+
+  """Filter by the object’s `websiteUrl` field."""
+  websiteUrl: StringFilter
+}
+
+"""Grouping methods for `Person` for usage during aggregation."""
+enum PersonGroupBy {
+  CREATED_AT
+  CREATED_AT_TRUNCATED_TO_DAY
+  CREATED_AT_TRUNCATED_TO_HOUR
+  FIRST_NAME
+  LAST_NAME
+  MIDDLE_NAME
+  SUFFIX
+  TYPE
+  UPDATED_AT
+  UPDATED_AT_TRUNCATED_TO_DAY
+  UPDATED_AT_TRUNCATED_TO_HOUR
+  WEBSITE_URL
+}
+
+input PersonHavingAverageInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input PersonHavingDistinctCountInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+"""Conditions for `Person` aggregates."""
+input PersonHavingInput {
+  AND: [PersonHavingInput!]
+  OR: [PersonHavingInput!]
+  average: PersonHavingAverageInput
+  distinctCount: PersonHavingDistinctCountInput
+  max: PersonHavingMaxInput
+  min: PersonHavingMinInput
+  stddevPopulation: PersonHavingStddevPopulationInput
+  stddevSample: PersonHavingStddevSampleInput
+  sum: PersonHavingSumInput
+  variancePopulation: PersonHavingVariancePopulationInput
+  varianceSample: PersonHavingVarianceSampleInput
+}
+
+input PersonHavingMaxInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input PersonHavingMinInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input PersonHavingStddevPopulationInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input PersonHavingStddevSampleInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input PersonHavingSumInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input PersonHavingVariancePopulationInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+input PersonHavingVarianceSampleInput {
+  createdAt: HavingDatetimeFilter
+  updatedAt: HavingDatetimeFilter
+}
+
+"""The root query type which gives access points into the data universe."""
+type Query implements Node {
+  """Reads and enables pagination through a set of `Entity`."""
+  entities(
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: EntityCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: EntityFilter
+
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """The method to use when ordering `Entity`."""
+    orderBy: [EntitiesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): EntitiesConnection
+
+  """
+  The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
+  """
+  id: ID!
+
+  """Fetches an object given its globally unique `ID`."""
+  node(
+    """The globally unique `ID`."""
+    id: ID!
+  ): Node
+
+  """Reads a single `Organization` using its globally unique `ID`."""
+  organizationById(
+    """
+    The globally unique `ID` to be used in selecting a single `Organization`.
+    """
+    id: ID!
+  ): Organization
+
+  """Reads and enables pagination through a set of `Organization`."""
+  organizations(
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: OrganizationCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: OrganizationFilter
+
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """The method to use when ordering `Organization`."""
+    orderBy: [OrganizationsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): OrganizationsConnection
+
+  """Reads and enables pagination through a set of `Person`."""
+  people(
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PersonCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PersonFilter
+
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """The method to use when ordering `Person`."""
+    orderBy: [PeopleOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PeopleConnection
+
+  """Reads a single `Person` using its globally unique `ID`."""
+  personById(
+    """The globally unique `ID` to be used in selecting a single `Person`."""
+    id: ID!
+  ): Person
+
+  """
+  Exposes the root query type nested one level down. This is helpful for Relay 1
+  which can only query top level fields if they are in a particular form.
+  """
+  query: Query!
+}
+
+"""
+A filter to be used against String fields. All fields are combined with a logical ‘and.’
+"""
+input StringFilter {
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: String
+
+  """
+  Not equal to the specified value, treating null like an ordinary value (case-insensitive).
+  """
+  distinctFromInsensitive: String
+
+  """Ends with the specified string (case-sensitive)."""
+  endsWith: String
+
+  """Ends with the specified string (case-insensitive)."""
+  endsWithInsensitive: String
+
+  """Equal to the specified value."""
+  equalTo: String
+
+  """Equal to the specified value (case-insensitive)."""
+  equalToInsensitive: String
+
+  """Greater than the specified value."""
+  greaterThan: String
+
+  """Greater than the specified value (case-insensitive)."""
+  greaterThanInsensitive: String
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: String
+
+  """Greater than or equal to the specified value (case-insensitive)."""
+  greaterThanOrEqualToInsensitive: String
+
+  """Included in the specified list."""
+  in: [String!]
+
+  """Included in the specified list (case-insensitive)."""
+  inInsensitive: [String!]
+
+  """Contains the specified string (case-sensitive)."""
+  includes: String
+
+  """Contains the specified string (case-insensitive)."""
+  includesInsensitive: String
+
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Less than the specified value."""
+  lessThan: String
+
+  """Less than the specified value (case-insensitive)."""
+  lessThanInsensitive: String
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: String
+
+  """Less than or equal to the specified value (case-insensitive)."""
+  lessThanOrEqualToInsensitive: String
+
+  """
+  Matches the specified pattern (case-sensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters.
+  """
+  like: String
+
+  """
+  Matches the specified pattern (case-insensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters.
+  """
+  likeInsensitive: String
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: String
+
+  """
+  Equal to the specified value, treating null like an ordinary value (case-insensitive).
+  """
+  notDistinctFromInsensitive: String
+
+  """Does not end with the specified string (case-sensitive)."""
+  notEndsWith: String
+
+  """Does not end with the specified string (case-insensitive)."""
+  notEndsWithInsensitive: String
+
+  """Not equal to the specified value."""
+  notEqualTo: String
+
+  """Not equal to the specified value (case-insensitive)."""
+  notEqualToInsensitive: String
+
+  """Not included in the specified list."""
+  notIn: [String!]
+
+  """Not included in the specified list (case-insensitive)."""
+  notInInsensitive: [String!]
+
+  """Does not contain the specified string (case-sensitive)."""
+  notIncludes: String
+
+  """Does not contain the specified string (case-insensitive)."""
+  notIncludesInsensitive: String
+
+  """
+  Does not match the specified pattern (case-sensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters.
+  """
+  notLike: String
+
+  """
+  Does not match the specified pattern (case-insensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters.
+  """
+  notLikeInsensitive: String
+
+  """Does not start with the specified string (case-sensitive)."""
+  notStartsWith: String
+
+  """Does not start with the specified string (case-insensitive)."""
+  notStartsWithInsensitive: String
+
+  """Starts with the specified string (case-sensitive)."""
+  startsWith: String
+
+  """Starts with the specified string (case-insensitive)."""
+  startsWithInsensitive: String
+}
+
+"""
+A universally unique identifier as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122).
+"""
+scalar UUID
+
+"""
+A filter to be used against UUID fields. All fields are combined with a logical ‘and.’
+"""
+input UUIDFilter {
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: UUID
+
+  """Equal to the specified value."""
+  equalTo: UUID
+
+  """Greater than the specified value."""
+  greaterThan: UUID
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: UUID
+
+  """Included in the specified list."""
+  in: [UUID!]
+
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Less than the specified value."""
+  lessThan: UUID
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: UUID
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: UUID
+
+  """Not equal to the specified value."""
+  notEqualTo: UUID
+
+  """Not included in the specified list."""
+  notIn: [UUID!]
+}
