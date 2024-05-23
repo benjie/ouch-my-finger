@@ -5,14 +5,14 @@
     "postgraphile": "postgraphile"
   },
   "dependencies": {
-    "@grafserv/persisted": "^0.0.0-beta.21",
+    "@grafserv/persisted": "^0.0.0-beta.23",
     "@graphile-contrib/pg-many-to-many": "^2.0.0-beta.1",
     "@graphile-contrib/pg-omit-archived": "^4.0.0-beta.3",
-    "@graphile/pg-aggregates": "^0.2.0-beta.5",
+    "@graphile/pg-aggregates": "^0.2.0-beta.6",
     "@graphile/simplify-inflection": "^8.0.0-beta.5",
     "express": "^4.18.2",
-    "graphile": "^5.0.0-beta.24",
-    "postgraphile": "^5.0.0-beta.24",
+    "graphile": "^5.0.0-beta.26",
+    "postgraphile": "^5.0.0-beta.26",
     "postgraphile-plugin-connection-filter": "^3.0.0-beta.3",
     "ws": "^8.13.0"
   },
