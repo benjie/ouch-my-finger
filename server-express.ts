@@ -2,7 +2,7 @@
 import express from "express";
 import { grafserv } from "postgraphile/grafserv/express/v4";
 import { postgraphile } from "postgraphile";
-import preset from "./graphile.config.mjs";
+import { preset } from "./graphile.config.ts";
 
 // Create an express app
 const app = express();

@@ -2,6 +2,7 @@
   "name": "@localrepo/app",
   "private": true,
   "scripts": {
+    "serve": "DEBUG=\"graphile-build:warn,@dataplan/pg:*\" node --env-file=.env --import=tsx server-express.ts",
     "postgraphile": "postgraphile"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
     "@types/express": "^4.17.17",
     "prettier": "^2.8.2",
     "ts-node": "^10.9.1",
+    "tsx": "^4.11.0",
     "typescript": "^5.0.4"
   },
   "prettier": {
