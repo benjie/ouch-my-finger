@@ -1,4 +1,6 @@
-CREATE DATABASE "lambda-list-subscription-cache-db";
+/*
+dropdb --if-exists gitrojones-lambda-list && createdb gitrojones-lambda-list && psql -X1v ON_ERROR_STOP=1 -f basic-schema.sql gitrojones-lambda-list
+*/
 
 CREATE TABLE public.foo
 (
