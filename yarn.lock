@@ -52,10 +52,10 @@
     "@graphile/lru" "^5.0.0-beta.3"
     tslib "^2.6.2"
 
-"@graphile-contrib/pg-many-to-many@^2.0.0-beta.1":
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@graphile-contrib/pg-many-to-many/-/pg-many-to-many-2.0.0-beta.1.tgz#419e7a8d6cf239c0e1c23aa1fd8a90009476b42c"
-  integrity sha512-Nq427BojYFZ7Pi61b3m0nnYuGvtArLUw6HcwmvpckNXUuoDxb1V7iV/KbK8FttIq/VEmSaR+ts7yx6dCZZEpWg==
+"@graphile-contrib/pg-many-to-many@^2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@graphile-contrib/pg-many-to-many/-/pg-many-to-many-2.0.0-beta.3.tgz#c0bf362af3feb7f044091fe373b29910db72d3b4"
+  integrity sha512-NMxVQc7V5u4TaOQkerqwn20fMTPKOjk+QsTP2wqyJS9CGYg2YLKweB4RrItZa0eLt3ZZGjvpARW1fSHM7vvXLw==
 
 "@graphile-contrib/pg-omit-archived@^4.0.0-beta.3":
   version "4.0.0-beta.3"
