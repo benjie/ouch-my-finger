@@ -8,7 +8,7 @@ import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
 // import { PgSimplifyInflectionPreset } from "@graphile/simplify-inflection";
 import PersistedPlugin from "@grafserv/persisted";
 import { PgOmitArchivedPlugin } from "@graphile-contrib/pg-omit-archived";
-import { BrokenPlugin } from "./broken-plugin.mjs";
+import { BrokenPlugin, BrokenWrap } from "./broken-plugin.mjs";
 
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
 
@@ -26,7 +26,12 @@ const preset = {
     PgAggregatesPreset,
     // PgSimplifyInflectionPreset
   ],
-  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin, BrokenPlugin],
+  plugins: [
+    PersistedPlugin.default,
+    PgOmitArchivedPlugin,
+    BrokenWrap,
+    BrokenPlugin,
+  ],
   pgServices: [
     makePgService({
       // Database connection string:
@@ -44,6 +49,9 @@ const preset = {
   },
   grafast: {
     explain: true,
+    context: {
+      userId: "x",
+    },
   },
 };
 
