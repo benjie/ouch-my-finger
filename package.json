@@ -2,6 +2,8 @@
   "name": "@localrepo/app",
   "private": true,
   "scripts": {
+    "start": "GRAPHILE_ENV=production node server-express.mjs",
+    "dev": "GRAPHILE_ENV=development node server-express.mjs",
     "postgraphile": "postgraphile"
   },
   "dependencies": {
