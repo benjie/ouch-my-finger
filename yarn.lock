@@ -9,18 +9,18 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@dataplan/json@0.0.1-beta.21":
-  version "0.0.1-beta.21"
-  resolved "https://registry.yarnpkg.com/@dataplan/json/-/json-0.0.1-beta.21.tgz#9fc6866ce5234cdef561825f3b2e4a2a8df57bd3"
-  integrity sha512-iNWFV6ThFZIqDNEizTA5380U4bMtBjNe5F5wbJmyaPLvFE4cp/9ztbKuIrI33oAuiqr5z0Msn2gpwk5qJRu6UA==
+"@dataplan/json@0.0.1-beta.22":
+  version "0.0.1-beta.22"
+  resolved "https://registry.yarnpkg.com/@dataplan/json/-/json-0.0.1-beta.22.tgz#b4e2fa092a40a13e17caee335e20081aca37bb37"
+  integrity sha512-hAHQlywbWm62zUuwMzp70eCmCi6a2/8Oh4Rjt+QvGZ/qrBUt2p68iOF5EGtLnqTqKSnIs/SRxFK8arxvCphmuA==
   dependencies:
     chalk "^4.1.2"
     tslib "^2.6.2"
 
-"@dataplan/pg@0.0.1-beta.23":
-  version "0.0.1-beta.23"
-  resolved "https://registry.yarnpkg.com/@dataplan/pg/-/pg-0.0.1-beta.23.tgz#45c768110310f0a2fbdff85e7fe6a038d9c775f0"
-  integrity sha512-bK1APUN7u9mluLQKoz/4X/1XweTqTyDtFTUsCFD8c7Cie7mVUINYB8Yd+xolsRgj2pfUrZqIQYycCTTNYodBHA==
+"@dataplan/pg@0.0.1-beta.24":
+  version "0.0.1-beta.24"
+  resolved "https://registry.yarnpkg.com/@dataplan/pg/-/pg-0.0.1-beta.24.tgz#89f13d496432551d65442ccd57f30a0844f2e774"
+  integrity sha512-KUPXz+YCpe0uYdD9l2WQyzKM51czm9ToU8bevO7d1bMCrVYVd3WJk350oMRslAwR2tFmpRDHhBkEm1RwUZ2y5A==
   dependencies:
     "@graphile/lru" "^5.0.0-beta.3"
     "@types/node" "^20.5.7"
@@ -44,10 +44,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.8.1.tgz#c1ddb040429c6d21d38cc945fe75c818cfb68e17"
   integrity sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==
 
-"@grafserv/persisted@^0.0.0-beta.24":
-  version "0.0.0-beta.24"
-  resolved "https://registry.yarnpkg.com/@grafserv/persisted/-/persisted-0.0.0-beta.24.tgz#e98f25f4d77acd3dfa4ea886a9e7b626422cba08"
-  integrity sha512-rdyuGq+Gh8piYxkDMH5vhFybcC8KmI10idYG5A130GU5+JT4pw3b/5+nkYWk1nlD2TDapYxreOTBvNcZUP3ieA==
+"@grafserv/persisted@^0.0.0-beta.25":
+  version "0.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/@grafserv/persisted/-/persisted-0.0.0-beta.25.tgz#ddcad23047c7e9ebc666fce3bdd0fa9e78f05396"
+  integrity sha512-s3xB5+AFQKiPyTe6pfBNyK1nWcLfTq/FJ+0kOSryWSVnawsQQ0OCb0+cypW9wU2Zazd23G1Bqt+CzzB2MB1OFw==
   dependencies:
     "@graphile/lru" "^5.0.0-beta.3"
     tslib "^2.6.2"
@@ -509,10 +509,10 @@ get-intrinsic@^1.0.2:
     has "^1.0.3"
     has-symbols "^1.0.3"
 
-grafast@^0.1.1-beta.12:
-  version "0.1.1-beta.12"
-  resolved "https://registry.yarnpkg.com/grafast/-/grafast-0.1.1-beta.12.tgz#103e95182ce42f6cd6ac799f1c859aa86aeee5a6"
-  integrity sha512-gKHpzQd1a5cNjVeF38YfidcboDDo7PwXM+7gaEg7l6XiCowv+yeapGqS0s69/Awa5mu2dx/FRNGVTec1rKaOOg==
+grafast@^0.1.1-beta.13:
+  version "0.1.1-beta.13"
+  resolved "https://registry.yarnpkg.com/grafast/-/grafast-0.1.1-beta.13.tgz#3e486bb5cbe3c61f244abb62402aa3441824963a"
+  integrity sha512-eL4BcGxJNGCqRARvZqHH9SiSyruwsr2VPfN6CeUGG7PoiDVz1f8kVV7OtLkDP/zbL1ETPFUDyA9tu8MzPXDOUw==
   dependencies:
     "@graphile/lru" "^5.0.0-beta.3"
     chalk "^4.1.2"
@@ -523,10 +523,10 @@ grafast@^0.1.1-beta.12:
     tamedevil "^0.0.0-beta.7"
     tslib "^2.6.2"
 
-grafserv@^0.1.1-beta.14:
-  version "0.1.1-beta.14"
-  resolved "https://registry.yarnpkg.com/grafserv/-/grafserv-0.1.1-beta.14.tgz#0b91395d9d831c611499daaf21376b69446118ad"
-  integrity sha512-FEDG+V3H3UlJNW5P5L6gGdXksLzHaoaj9+TnwwqldkGKMLSJcF+a8VhfWMuDH8Ra6KJUWx7kXOiAvOL9Bn/73Q==
+grafserv@^0.1.1-beta.15:
+  version "0.1.1-beta.15"
+  resolved "https://registry.yarnpkg.com/grafserv/-/grafserv-0.1.1-beta.15.tgz#4c6d9f2c9c0c1b3275ba39be6027d4fd76e6606f"
+  integrity sha512-YxlFw3vpD/m3+dF63Lz1L1HJo6B3CG8ZN57YV4nnuopYSZ+jRcIKag1Z0kFTUv/Krs8jdGjeJhuI6rGZ3J8c2w==
   dependencies:
     "@graphile/lru" "^5.0.0-beta.3"
     debug "^4.3.4"
@@ -536,10 +536,10 @@ grafserv@^0.1.1-beta.14:
     ruru "^2.0.0-beta.14"
     tslib "^2.6.2"
 
-graphile-build-pg@5.0.0-beta.26:
-  version "5.0.0-beta.26"
-  resolved "https://registry.yarnpkg.com/graphile-build-pg/-/graphile-build-pg-5.0.0-beta.26.tgz#87d9e55d45fbe26d743c16e8f352461e26d06849"
-  integrity sha512-/MSsP/fJtsqXuCHJqxz4GHzRBddT7EzNnIgcv9E7nd4sMLzSHHZIL4RP4zBGPhaRGvOxWZx1XJJIA3o7uAtZrw==
+graphile-build-pg@5.0.0-beta.27:
+  version "5.0.0-beta.27"
+  resolved "https://registry.yarnpkg.com/graphile-build-pg/-/graphile-build-pg-5.0.0-beta.27.tgz#bfeb0f1811616f011d76ff18c5670c72a72766c9"
+  integrity sha512-GGMf0IMkJB3G/G6Gyu21y6HgLJtxQegIGnAZQJBKvdKyznDbe8mbdLYM7qiJaar6IBiJj2ctnBhA127arvjfIw==
   dependencies:
     "@types/node" "^20.5.7"
     debug "^4.3.4"
@@ -548,10 +548,10 @@ graphile-build-pg@5.0.0-beta.26:
     pg-introspection "^0.0.1-beta.8"
     tslib "^2.6.2"
 
-graphile-build@5.0.0-beta.22:
-  version "5.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/graphile-build/-/graphile-build-5.0.0-beta.22.tgz#c5616d316cf55f70b1ccce9bad8798618f228f58"
-  integrity sha512-GCN0Vak3aeWYmEehLHKRg1ZdzERIUWBqLcEjnBWzGw2t4XrjtC3/5RNcskSe7AMPD27DBTjcnkPe2Z84muAvZw==
+graphile-build@5.0.0-beta.23:
+  version "5.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/graphile-build/-/graphile-build-5.0.0-beta.23.tgz#49ab97c1a7b44cc4daa1e73526850716d6a0748d"
+  integrity sha512-zZ9XjTxHY07HaibTST0g39wNP18Jv5Z33atQDgkKK/nJeEh1cJdBrG2MFV1ExgBQNk9Vkn3/wwatXJKjzUVKjQ==
   dependencies:
     "@types/node" "^20.5.7"
     "@types/pluralize" "^0.0.30"
@@ -581,19 +581,19 @@ graphile-config@^0.0.1-beta.9:
     tslib "^2.6.2"
     yargs "^17.7.2"
 
-graphile-utils@^5.0.0-beta.26:
-  version "5.0.0-beta.26"
-  resolved "https://registry.yarnpkg.com/graphile-utils/-/graphile-utils-5.0.0-beta.26.tgz#9f1bbdd2d801520184caa6eb401e7970a48f7a93"
-  integrity sha512-9No3Kyeu3l0Bh7DQCMIdL6wxSoNyOV5c8upjBxe/i6quLbpJ/K2JFiKX85UmrxJL3nTFNttdjAmqimJ6fYb3CQ==
+graphile-utils@^5.0.0-beta.27:
+  version "5.0.0-beta.27"
+  resolved "https://registry.yarnpkg.com/graphile-utils/-/graphile-utils-5.0.0-beta.27.tgz#64c20f3b6039d70380396e399553f5099cd798a9"
+  integrity sha512-IQsEa1csvnb//8CoOKJFG+GOWlN/tjzJT+9hePo7dHsjNq+M/2MG7Td3tFThkHht25ynWu++QLHuYxik2cCang==
   dependencies:
     debug "^4.3.4"
     json5 "^2.2.3"
     tslib "^2.6.2"
 
-graphile@^5.0.0-beta.27:
-  version "5.0.0-beta.27"
-  resolved "https://registry.yarnpkg.com/graphile/-/graphile-5.0.0-beta.27.tgz#2ef11de3d669c626a6e37a875f5e11ed724b8ab5"
-  integrity sha512-LcwjZO+jv5xaisujBqdMEWPZ++N8rm/8DS3Zr2jwMer7HNmmfRKx46diHkmB3+QCW7199Y2AYozyFH2XPaPXCQ==
+graphile@^5.0.0-beta.28:
+  version "5.0.0-beta.28"
+  resolved "https://registry.yarnpkg.com/graphile/-/graphile-5.0.0-beta.28.tgz#71ac64dba70e29783173aeeb92b8b89070a68bcf"
+  integrity sha512-18pdGNnlhiBCMnu2OnGS0aQ5e2BClsmJCfFIHreWwRSbrj55ehVrF2J6p2OZGdc4rKdsdcur8nfIRU3xor1SZw==
   dependencies:
     "@typescript/vfs" "^1.5.0"
     chalk "^4.1.2"
@@ -957,23 +957,23 @@ postgraphile-plugin-connection-filter@^3.0.0-beta.3:
   dependencies:
     tslib "^2.5.0"
 
-postgraphile@^5.0.0-beta.27:
-  version "5.0.0-beta.27"
-  resolved "https://registry.yarnpkg.com/postgraphile/-/postgraphile-5.0.0-beta.27.tgz#9cd3a849425e9e525c229b97fa39d31d52b09860"
-  integrity sha512-ILASNPOhL+cgvDLkLDMjzkm96lwvGtZLiIyY3Vf2u/1T62dfcU11NgcPa4YIKwP9Vsi6dLJKBF2aFpzV3N9Zmw==
+postgraphile@^5.0.0-beta.28:
+  version "5.0.0-beta.28"
+  resolved "https://registry.yarnpkg.com/postgraphile/-/postgraphile-5.0.0-beta.28.tgz#800cc8a67eb803144b8e6a2195b97563b32ce0e0"
+  integrity sha512-EN/IAt8IW+1kW2SuIGgCSUvnvyl1wdXV3b7MSD2/X9dUnGiuwRf46wwf5HTgQcu6xzn4ZyA7T5UFoIMttFHh4w==
   dependencies:
-    "@dataplan/json" "0.0.1-beta.21"
-    "@dataplan/pg" "0.0.1-beta.23"
+    "@dataplan/json" "0.0.1-beta.22"
+    "@dataplan/pg" "0.0.1-beta.24"
     "@graphile/lru" "^5.0.0-beta.3"
     "@types/node" "^20.5.7"
     "@types/pg" "^8.10.2"
     debug "^4.3.4"
-    grafast "^0.1.1-beta.12"
-    grafserv "^0.1.1-beta.14"
-    graphile-build "5.0.0-beta.22"
-    graphile-build-pg "5.0.0-beta.26"
+    grafast "^0.1.1-beta.13"
+    grafserv "^0.1.1-beta.15"
+    graphile-build "5.0.0-beta.23"
+    graphile-build-pg "5.0.0-beta.27"
     graphile-config "^0.0.1-beta.9"
-    graphile-utils "^5.0.0-beta.26"
+    graphile-utils "^5.0.0-beta.27"
     graphql "^16.1.0-experimental-stream-defer.6"
     iterall "^1.3.0"
     jsonwebtoken "^9.0.2"
