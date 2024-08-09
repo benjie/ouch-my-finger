@@ -8,8 +8,30 @@ import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
 // import { PgSimplifyInflectionPreset } from "@graphile/simplify-inflection";
 import PersistedPlugin from "@grafserv/persisted";
 import { PgOmitArchivedPlugin } from "@graphile-contrib/pg-omit-archived";
+import { gql, makeExtendSchemaPlugin, makeWrapPlansPlugin } from "postgraphile/utils";
 
-// For configuration file details, see: https://postgraphile.org/postgraphile/next/config
+const BrokenPlugin = makeExtendSchemaPlugin((build) => {
+  const { books } = build.input.pgRegistry.pgResources;
+
+  return {
+    typeDefs: gql`
+      extend type User {
+        bookFoo(edition: Int!): Book
+      }
+    `,
+    plans: {
+      User: {
+        bookFoo($parent, $args) {
+          return books.get({
+            author: $parent.get('id'),
+            edition: $args.getRaw('edition'),
+          })
+        },
+      },
+    },
+  };
+});
+
 
 /** @satisfies {GraphileConfig.Preset} */
 const preset = {
@@ -25,7 +47,7 @@ const preset = {
     PgAggregatesPreset,
     // PgSimplifyInflectionPreset
   ],
-  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin],
+  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin,BrokenPlugin],
   pgServices: [
     makePgService({
       // Database connection string:
