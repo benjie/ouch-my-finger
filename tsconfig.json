@@ -1,9 +1,13 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
+  "esm": true,
   "compilerOptions": {
     "allowJs": true,
-    "target": "es2022",
-    "module": "es2022",
-    "moduleResolution": "NodeNext"
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext"  
+  },
+    "ts-node": {
+      "experimentalResolver": true
   }
 }
