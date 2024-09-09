@@ -50,6 +50,7 @@ const preset: GraphileConfig.Preset = {
     PgSimplifyInflectionPreset,
     PostGraphileConnectionFilterPreset,
     PgAggregatesPreset,
+    PostGraphileAmberPreset,
   ],
 
   // Plugins taken from PostGraphileAmberPreset
@@ -80,12 +81,7 @@ const preset: GraphileConfig.Preset = {
   disablePlugins: ['NodePlugin'],
 
   pgServices: [makePgService({ connectionString })],
-  schema: {
-    // TODO replace with "-*" once https://github.com/graphile/crystal/pull/1803 is released
-    defaultBehavior: '-table -select -insert -update -delete -connection -queryField -query:resource:connection -attribute:filter', // Disable CRUD by default
-    pgShortPk: true,
-    connectionFilterRelations: true,
-  },
+
 };
 
 export default preset;
