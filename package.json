@@ -32,5 +32,8 @@
   },
   "prettier": {
     "proseWrap": "always"
-  }
+  },
+  "resolutions": {
+    "@babel/traverse": "7.25.2"
+}
 }
