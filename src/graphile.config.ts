@@ -24,6 +24,7 @@ import {
 } from 'graphile-build-pg';
 import { makePgService } from 'postgraphile/adaptors/pg';
 import { PostGraphileConnectionFilterPreset } from 'postgraphile-plugin-connection-filter';
+import PostGraphileAmberPreset from 'postgraphile/presets/amber';
 
 interface PgConnectConfig {
   user: string
@@ -50,7 +51,7 @@ const preset: GraphileConfig.Preset = {
     PgSimplifyInflectionPreset,
     PostGraphileConnectionFilterPreset,
     PgAggregatesPreset,
-    PostGraphileAmberPreset,
+    PostGraphileAmberPreset
   ],
 
   // Plugins taken from PostGraphileAmberPreset
