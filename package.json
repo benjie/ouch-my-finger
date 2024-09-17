@@ -31,6 +31,6 @@
     "proseWrap": "always"
   },
   "resolutions": {
-    "@babel/traverse": "7.25.2"
+    "@babel/traverse": "7.24.7"
 }
 }

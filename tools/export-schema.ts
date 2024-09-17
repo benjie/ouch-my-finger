@@ -6,7 +6,7 @@ const main = async () => {
   console.log(`Exporting a GraphQL schema from the database at ${preset?.pgServices?.[0].name}...`);
 
   const { schema, resolvedPreset } = await makeSchema(preset);
-  const exportFileLocation = `${__dirname}/src/exported-schema.js`;
+  const exportFileLocation = `${__dirname}/../exported-schema.js`;
 
   await exportSchema(schema, exportFileLocation, {
     mode: "typeDefs",
