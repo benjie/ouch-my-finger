@@ -12,6 +12,8 @@ import { PgOmitArchivedPlugin } from "@graphile-contrib/pg-omit-archived";
 // Use PGlite+pg-gateway for local ephemeral pg server
 import {db, connectionString} from './pglite.mjs'
 
+import {ReproPlugin} from './repro_plugin.mjs'
+
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
 /** @satisfies {GraphileConfig.Preset} */
 const preset = {
@@ -27,13 +29,13 @@ const preset = {
     PgAggregatesPreset,
     // PgSimplifyInflectionPreset
   ],
-  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin],
+  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin, ReproPlugin],
   pgServices: [
     makePgService({
       // Database connection string:
-      connectionString: connectionString,
+      connectionString: process.env.DATABASE_URL,
       // List of schemas to expose:
-      schemas: ["public"],
+      schemas: process.env.DATABASE_SCHEMAS?.split(",") ?? ["public"],
       // Enable LISTEN/NOTIFY:
       pubsub: true,
     }),
