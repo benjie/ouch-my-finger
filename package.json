@@ -7,6 +7,7 @@
     "postgraphile": "postgraphile"
   },
   "dependencies": {
+    "@electric-sql/pglite": "^0.2.14",
     "@grafserv/persisted": "^0.0.0-beta.27",
     "@graphile-contrib/pg-many-to-many": "^2.0.0-beta.4",
     "@graphile-contrib/pg-omit-archived": "^4.0.0-beta.3",
@@ -14,6 +15,7 @@
     "@graphile/simplify-inflection": "^8.0.0-beta.5",
     "express": "^4.18.2",
     "graphile": "^5.0.0-beta.32",
+    "pg-gateway": "^0.3.0-beta.3",
     "postgraphile": "^5.0.0-beta.32",
     "postgraphile-plugin-connection-filter": "^3.0.0-beta.5",
     "ws": "^8.13.0"

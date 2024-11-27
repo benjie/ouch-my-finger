@@ -32,6 +32,11 @@
     postgres-range "^1.1.3"
     tslib "^2.6.2"
 
+"@electric-sql/pglite@^0.2.14":
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/@electric-sql/pglite/-/pglite-0.2.14.tgz#d758d8b9c6e494046db66914505aff0ea389795b"
+  integrity sha512-ZMYZL/yFu5sCewYecdX4OjyOPcrI2OmQ6598e/tyke4Rpgeekd4+pINf9jjzJNJk1Kq5dtuB6buqZsBQf0sx8A==
+
 "@emotion/is-prop-valid@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-1.2.1.tgz#23116cf1ed18bfeac910ec6436561ecb1a3885cc"
@@ -869,6 +874,11 @@ pg-connection-string@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-2.6.2.tgz#713d82053de4e2bd166fab70cd4f26ad36aab475"
   integrity sha512-ch6OwaeaPYcova4kKZ15sbJ2hKb/VP48ZD2gE7i1J+L4MspCtBMAx8nMgz7bksc7IojCIIWuEhHibSMFH8m8oA==
+
+pg-gateway@^0.3.0-beta.3:
+  version "0.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/pg-gateway/-/pg-gateway-0.3.0-beta.3.tgz#d025cd90a06f367e8fe6db7891e997082811613f"
+  integrity sha512-tzO/TSlFzgu6AJvn4clzZpDfCDyRjG/GnGYtdi1kgN+h+TmaD/1xDfqqVhcknPDx7qQaViq8JW7aQiazn3QaqQ==
 
 pg-int8@1.0.1:
   version "1.0.1"

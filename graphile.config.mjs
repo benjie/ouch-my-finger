@@ -9,8 +9,10 @@ import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
 import PersistedPlugin from "@grafserv/persisted";
 import { PgOmitArchivedPlugin } from "@graphile-contrib/pg-omit-archived";
 
-// For configuration file details, see: https://postgraphile.org/postgraphile/next/config
+// Use PGlite+pg-gateway for local ephemeral pg server
+import {db, connectionString} from './pglite.mjs'
 
+// For configuration file details, see: https://postgraphile.org/postgraphile/next/config
 /** @satisfies {GraphileConfig.Preset} */
 const preset = {
   extends: [
@@ -29,9 +31,9 @@ const preset = {
   pgServices: [
     makePgService({
       // Database connection string:
-      connectionString: process.env.DATABASE_URL,
+      connectionString: connectionString,
       // List of schemas to expose:
-      schemas: process.env.DATABASE_SCHEMAS?.split(",") ?? ["public"],
+      schemas: ["public"],
       // Enable LISTEN/NOTIFY:
       pubsub: true,
     }),
