@@ -11,6 +11,16 @@
      */
     class: {
       // e.g. "schema.table": { tags: { foreignKey: "(attr) references tbl (attr)" } },
+      "public.sea_view": {
+        tags: {
+          foreignKey: "(non_developer_user_id) references public.users (id)|@behavior +connection -list",
+        },
+        attribute: {
+          non_developer_user_id: {
+            tags: { behavior: "+manyRelation:resource:list -connection +list" },
+          },
+        },
+      },
     },
   },
 }
