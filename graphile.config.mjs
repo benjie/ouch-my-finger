@@ -35,6 +35,8 @@ const preset = {
     makePgService({
       // Database connection string:
       connectionString: process.env.DATABASE_URL,
+      superuserConnectionString:
+        process.env.SUPERUSER_DATABASE_URL ?? process.env.DATABASE_URL,
       // List of schemas to expose:
       schemas: process.env.DATABASE_SCHEMAS?.split(",") ?? ["public"],
       // Enable LISTEN/NOTIFY:
@@ -45,6 +47,7 @@ const preset = {
     port: 5678,
     websockets: true,
     allowUnpersistedOperation: true,
+    watch: true,
   },
   grafast: {
     explain: true,
