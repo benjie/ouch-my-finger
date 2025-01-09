@@ -24,7 +24,7 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
       }
 
       extend type Cat {
-        canSpeak: JSON
+        enemies: JSON
       }
     `,
     plans: {
@@ -51,21 +51,21 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
         },
       },
       Cat: {
-        canSpeak() {
-        //   const $settings = withPgClient(
-        //     cat.executor,
-        //     constant(null),
-        //     async (client) => {
-        //       const { rows } = await client.query({
-        //         text: /* SQL */ `
-        //         SELECT id
-        //         FROM public.cat
-        //       `,
-        //       });
+        enemies() {
+          // const $settings = withPgClient(
+          //   cat.executor,
+          //   constant(null),
+          //   async (client) => {
+          //     const { rows } = await client.query({
+          //       text: /* SQL */ `
+          //       SELECT id
+          //       FROM public.cat
+          //     `,
+          //     });
 
-        //       return rows;
-        //     }
-        //   );
+          //     return rows;
+          //   }
+          // );
           const $settings = loadMany(constant(null), context().get('pool'), batchGetDogs);
 
           return $settings;
