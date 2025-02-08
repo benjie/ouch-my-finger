@@ -1,0 +1,14 @@
+mutation UpdateUser ($patch: UserPatch!) {
+  updateUserById(input: {id: 1, userPatch: $patch}) {
+    user {
+      value1
+    }
+  }
+}
+
+# First run the mutation with
+# Variables: {"patch": {}}
+# you will get error ~"no values were provided"
+# Then run the mutation with
+# Variables: {"patch": {"value1": "new value"}}
+# we still get error ~"no values were provided"
