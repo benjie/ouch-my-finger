@@ -8,7 +8,7 @@ mutation UpdateUser ($patch: UserPatch!) {
 
 # First run the mutation with
 # Variables: {"patch": {}}
-# you will get error ~"no values were provided"
+# you will get error "Attempted to update a record, but no new values were specified."
 # Then run the mutation with
 # Variables: {"patch": {"value1": "new value"}}
-# we still get error ~"no values were provided"
+# we still get error "Attempted to update a record, but no new values were specified."
