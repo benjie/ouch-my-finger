@@ -14,11 +14,7 @@ create or replace function app_private.jwt()
   language sql
   stable
 as $$
-select
-  coalesce(
-    nullif(current_setting('request.jwt.claim', true), ''),
-    nullif(current_setting('request.jwt.claims', true), '')
-  )::jsonb;
+select nullif(current_setting('request.jwt.claims', true), '')::jsonb;
 $$;
 
 create function app_private.current_user_id()
@@ -117,18 +113,7 @@ grant all on table app_public.matches to authenticated;
 create policy "matches policy" on app_public.matches
   for all
   to authenticated
-  using (
-  (
-    select app_private.current_user_is_admin())
-    or (
-         select app_private.current_user_id()) in (from_user_id, to_user_id)
-  )
-  with check (
-  (
-    select app_private.current_user_is_admin())
-    or (
-         select app_private.current_user_id()) in (from_user_id, to_user_id)
-  );
+  using (app_private.jwt() is not null);
 
 create function app_private.tg_notify_match_sync()
   returns trigger
