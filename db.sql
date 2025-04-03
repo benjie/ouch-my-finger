@@ -9,58 +9,22 @@ create schema app_private authorization postgres;
 
 grant usage on schema app_public to authenticated;
 
-create or replace function app_private.jwt()
-  returns jsonb
-  language sql
-  stable
-as $$
-select nullif(current_setting('request.jwt.claims', true), '')::jsonb;
-$$;
-
 create function app_private.current_user_id()
   returns uuid
   language sql
-  security definer
   set search_path = ''
-  stable as
+  security definer as
 $$
-select (app_private.jwt() ->> 'sub')::uuid;
+select (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'sub')::uuid;
 $$;
 alter function app_private.current_user_id() owner to postgres;
 
 create table app_public.users (
   id       uuid    default gen_random_uuid() not null primary key,
-  name     text                              not null,
-  is_admin boolean default false             not null
+  name     text                              not null
 );
 
 grant all on table app_public.users to authenticated;
-
-create index users_is_admin_idx on app_public.users using btree (is_admin);
-
-create function app_private.user_is_admin(uid uuid)
-  returns boolean
-  language sql
-  stable
-  set search_path = ''
-  security definer as
-$$
-select u.is_admin
-from app_public.users as u
-where u.id = uid;
-$$;
-alter function app_private.user_is_admin(uid uuid) owner to postgres;
-
-create function app_private.current_user_is_admin()
-  returns boolean
-  language sql
-  security definer
-  set search_path = ''
-  stable as
-$$
-select app_private.user_is_admin(app_private.current_user_id());
-$$;
-alter function app_private.current_user_is_admin() owner to postgres;
 
 create function app_public.current_user()
   returns app_public.users
@@ -84,11 +48,11 @@ create policy "users select" on app_public.users
   to authenticated
   using (true);
 
-insert into app_public.users (id, name, is_admin)
-values ('001c17e0-7740-4f79-80a4-7f7d9da01081', 'Alice', true),
-  ('002782bc-a77b-44eb-8d12-b108acdb5fcb', 'Bob', false),
-  ('005196f7-1ecb-4f6e-b0de-32e79cafb3d2', 'Jamie', false),
-  ('0175b7db-e204-4cc9-bd8f-d30c74377eb9', 'Valerie', false);
+insert into app_public.users (id, name)
+values
+  ('002782bc-a77b-44eb-8d12-b108acdb5fcb', 'Bob'),
+  ('005196f7-1ecb-4f6e-b0de-32e79cafb3d2', 'Jamie'),
+  ('0175b7db-e204-4cc9-bd8f-d30c74377eb9', 'Valerie');
 
 create table app_public.matches (
   id           uuid    default gen_random_uuid() not null primary key,
@@ -113,7 +77,7 @@ grant all on table app_public.matches to authenticated;
 create policy "matches policy" on app_public.matches
   for all
   to authenticated
-  using (app_private.jwt() is not null);
+  using (app_private.current_user_id() in (from_user_id, to_user_id));
 
 create function app_private.tg_notify_match_sync()
   returns trigger
