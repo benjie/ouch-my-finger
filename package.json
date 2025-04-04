@@ -7,16 +7,16 @@
     "postgraphile": "postgraphile"
   },
   "dependencies": {
-    "@grafserv/persisted": "^0.0.0-beta.30",
-    "@graphile-contrib/pg-many-to-many": "^2.0.0-beta.5",
-    "@graphile-contrib/pg-omit-archived": "^4.0.0-beta.3",
-    "@graphile/pg-aggregates": "^0.2.0-beta.7",
-    "@graphile/simplify-inflection": "^8.0.0-beta.5",
+    "@grafserv/persisted": "^0.0.0-beta.34",
+    "@graphile-contrib/pg-many-to-many": "^2.0.0-beta.7",
+    "@graphile-contrib/pg-omit-archived": "^4.0.0-beta.4",
+    "@graphile/pg-aggregates": "^0.2.0-beta.8",
+    "@graphile/simplify-inflection": "^8.0.0-beta.6",
     "express": "^4.18.2",
-    "graphile": "^5.0.0-beta.36",
+    "graphile": "^5.0.0-beta.40",
     "pg": "^8.13.1",
-    "postgraphile": "^5.0.0-beta.36",
-    "postgraphile-plugin-connection-filter": "^3.0.0-beta.7",
+    "postgraphile": "^5.0.0-beta.40",
+    "postgraphile-plugin-connection-filter": "^3.0.0-beta.8",
     "ws": "^8.13.0"
   },
   "devDependencies": {
