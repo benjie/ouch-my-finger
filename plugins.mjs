@@ -5,87 +5,66 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
   const {
     input: {
       pgRegistry: {
-        pgResources: { cat, dog },
+        pgResources: { animal, shop, owner },
       },
     },
-    grafast: { access, each, object, constant, loadMany, context },
+    grafast: { access, each, object, constant, loadMany, context, connection },
   } = build;
 
   return {
     typeDefs: gql`
-      input AnimalIdsAndTypesInput {
-        id: String!
-        type: String!
-      }
-      union Animal = Dog | Cat
-
-      extend type Query {
-        animals(input: [AnimalIdsAndTypesInput!]!): [Animal]!
+      extend type Shop {
+        animals: AnimalsConnection
       }
 
-      extend type Cat {
-        enemies: JSON
+      extend type CatAnimal {
+        owners: OwnersConnection
+      }
+      extend type DogAnimal {
+        owners: OwnersConnection
+      }
+
+      extend type Owner {
+        hasClinic: Boolean
       }
     `,
     plans: {
-      Query: {
-        animals(_, fieldArgs) {
-          const entityMap = {
-            Cat: {
-              match: (specifier) => specifier.type === "CAT",
-              plan: ($specifier) => cat.get({ id: access($specifier, ["id"]) }),
-            },
-            Dog: {
-              match: (specifier) => specifier.type === "DOG",
-              plan: ($specifier) => dog.get({ id: access($specifier, ["id"]) }),
-            },
-          };
+      Shop: {
+        animals($shop) {
+          const $animals = animal.find({
+            shop_id: $shop.get('id')
+          })
 
-          return each(fieldArgs.get("input"), ($content) => {
-            const $specifier = object({
-              id: access($content, ["id"]),
-              type: access($content, ["type"]),
-            });
-            return pgPolymorphic($content, $specifier, entityMap);
-          });
+          return connection($animals)
         },
       },
-      Cat: {
-        enemies() {
-          // const $settings = withPgClient(
-          //   cat.executor,
-          //   constant(null),
-          //   async (client) => {
-          //     const { rows } = await client.query({
-          //       text: /* SQL */ `
-          //       SELECT id
-          //       FROM public.cat
-          //     `,
-          //     });
+      CatAnimal: {
+        owners($animal) {
+          const $food = owner.find({
+            animal_id: $animal.get('id')
+          })
 
-          //     return rows;
-          //   }
-          // );
-          const $settings = loadMany(constant(null), context().get('pool'), batchGetDogs);
-
-          return $settings;
-        },
+          return connection($food)
+        }
       },
+      DogAnimal: {
+        owners($animal) {
+          const $food = owner.find({
+            animal_id: $animal.get('id')
+          })
+
+          return connection($food)
+        }
+      },
+      Owner: {
+        hasClinic($owner) {
+          const $shop = shop.get({
+            id: $owner.get('owner_id')
+          })
+
+          return $shop.get('has_clinic')
+        }
+      }
     },
   };
 });
-
-async function batchGetDogs(data, { unary: dbClient }) {
-  if (data.length === 0) {
-    return [];
-  }
-
-  const result = await dbClient.query({
-    text: /* SQL */ `
-    SELECT id
-    FROM public.dog
-    `,
-  });
-
-  return data.map(() => result.rows);
-}
