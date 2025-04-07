@@ -12,12 +12,9 @@ import { PgOmitArchivedPlugin } from "@graphile-contrib/pg-omit-archived";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { myExtensions } from "./plugins.mjs";
-import pg from 'pg'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-const { Pool } = pg;
 
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
 
@@ -58,11 +55,6 @@ const preset = {
   },
   grafast: {
     explain: true,
-    context: (ctx, args) => ({
-      pool: new Pool({
-        connectionString: process.env.DATABASE_URL
-      })
-    })
   },
 };
 
