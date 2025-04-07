@@ -877,11 +877,6 @@ pg-numeric@1.0.2:
   resolved "https://registry.yarnpkg.com/pg-numeric/-/pg-numeric-1.0.2.tgz#816d9a44026086ae8ae74839acd6a09b0636aa3a"
   integrity sha512-BM/Thnrw5jm2kKLE5uJkXqqExRUY/toLHda65XgFTBTFYZyopbKjBe29Ii3RbkvlsMoFwD+tHeGaCjjv0gHlyw==
 
-pg-pool@^3.7.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-3.7.0.tgz#d4d3c7ad640f8c6a2245adc369bafde4ebb8cbec"
-  integrity sha512-ZOBQForurqh4zZWjrgSwwAtzJ7QiRX0ovFkZr2klsen3Nm0aoh33Ls0fzfv3imeH/nw/O27cjdz5kzYJfeGp/g==
-
 pg-pool@^3.8.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-3.8.0.tgz#e6bce7fc4506a8d6106551363fc5283e5445b776"
@@ -891,11 +886,6 @@ pg-protocol@*:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/pg-protocol/-/pg-protocol-1.6.0.tgz#4c91613c0315349363af2084608db843502f8833"
   integrity sha512-M+PDm637OY5WM307051+bsDia5Xej6d9IR4GwJse1qA1DIhiKlksvrneZOYQq42OM+spubpcNYEo2FcKQrDk+Q==
-
-pg-protocol@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/pg-protocol/-/pg-protocol-1.7.0.tgz#ec037c87c20515372692edac8b63cf4405448a93"
-  integrity sha512-hTK/mE36i8fDDhgDFjy6xNOG+LCorxLG3WO17tku+ij6sVHXh1jQUJ8hYAnRhNla4QVD2H8er/FOjc/+EgC6yQ==
 
 pg-protocol@^1.8.0:
   version "1.8.0"
@@ -933,19 +923,6 @@ pg-types@^4.0.1:
     postgres-date "~2.0.1"
     postgres-interval "^3.0.0"
     postgres-range "^1.1.1"
-
-pg@^8.13.1:
-  version "8.13.1"
-  resolved "https://registry.yarnpkg.com/pg/-/pg-8.13.1.tgz#6498d8b0a87ff76c2df7a32160309d3168c0c080"
-  integrity sha512-OUir1A0rPNZlX//c7ksiu7crsGZTKSOXJPgtNiHGIlC9H0lO+NC6ZDYksSgBYY/thSWhnSRBv8w1lieNNGATNQ==
-  dependencies:
-    pg-connection-string "^2.7.0"
-    pg-pool "^3.7.0"
-    pg-protocol "^1.7.0"
-    pg-types "^2.1.0"
-    pgpass "1.x"
-  optionalDependencies:
-    pg-cloudflare "^1.1.1"
 
 pg@^8.13.3:
   version "8.14.1"
