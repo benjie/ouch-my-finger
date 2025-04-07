@@ -1,4 +1,6 @@
-import { pgPolymorphic, withPgClient } from "postgraphile/@dataplan/pg";
+
+import { sideEffect } from "postgraphile/grafast";
+import { GraphQLError } from "postgraphile/graphql";
 import { gql, makeExtendSchemaPlugin } from "postgraphile/utils";
 
 export const myExtensions = makeExtendSchemaPlugin((build) => {
@@ -8,7 +10,7 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
         pgResources: { animal, shop, owner },
       },
     },
-    grafast: { access, each, object, constant, loadMany, context, connection },
+    grafast: { connection },
   } = build;
 
   return {
@@ -30,7 +32,12 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
     `,
     plans: {
       Shop: {
-        animals($shop) {
+        animals($shop, { $first }) {
+          sideEffect($first, (arg) => {
+            if (arg && arg > 10) {
+              throw new GraphQLError('wrong input')
+            }
+          })
           const $animals = animal.find({
             shop_id: $shop.get('id')
           })
@@ -39,21 +46,31 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
         },
       },
       CatAnimal: {
-        owners($animal) {
-          const $food = owner.find({
+        owners($animal, { $first }) {
+          sideEffect($first, (arg) => {
+            if (arg && arg > 10) {
+              throw new GraphQLError('wrong input')
+            }
+          })
+          const $owners = owner.find({
             animal_id: $animal.get('id')
           })
 
-          return connection($food)
+          return connection($owners);
         }
       },
       DogAnimal: {
-        owners($animal) {
-          const $food = owner.find({
+        owners($animal, { $first }) {
+          sideEffect($first, (arg) => {
+            if (arg && arg > 10) {
+              throw new GraphQLError('wrong input')
+            }
+          })
+          const $owners = owner.find({
             animal_id: $animal.get('id')
           })
 
-          return connection($food)
+          return connection($owners);
         }
       },
       Owner: {
@@ -68,3 +85,4 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
     },
   };
 });
+
