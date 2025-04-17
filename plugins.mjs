@@ -5,10 +5,10 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
   const {
     input: {
       pgRegistry: {
-        pgResources: { shop, pet, get_shop_info },
+        pgResources: { shop, owner, v_metadata, image, get_shop_info },
       },
     },
-    grafast: { each, constant, lambda, connection },
+    grafast: { each, constant, lambda, connection, object },
   } = build;
 
   return {
@@ -19,7 +19,8 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
 
       extend type Shop {
         info: ShopInfo
-        pets: PetsConnection
+        owner: Owner
+        options: MetaOptions
       }
 
       type ShopInfo {
@@ -27,8 +28,14 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
         customersInfo(filter: String): JSON
       }
 
-      extend type Pet {
-        shop: Shop
+      type MetaOptions {
+        pickup: Boolean!
+        worldwide: Boolean!
+        random: String
+      }
+
+      extend type ShopFrontImage {
+        layouts: Image
       }
     `,
     plans: {
@@ -41,29 +48,45 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
         info($parent) {
           return $parent;
         },
-        pets($parent) {
-          return connection(pet.find({ shop_id: $parent.get('id') }))
+        owner($parent) {
+          return owner
+            .find({
+              id: $parent.get('owner_id'),
+            })
+            .single();
+        },
+        options($parent) {
+          const special = v_metadata.find({
+            id: $parent.get('dis_special'),
+          });
+          const specialTitle = special.single().get('title');
+          return object({
+            pickup: lambda($parent.get('di_pickup'), (v) => v !== null),
+            worldwide: lambda($parent.get('di_worldwide'), (v) => v !== null),
+            random: specialTitle,
+          });
         }
       },
       ShopInfo: {
         petInfo($parent, { $filter }) {
           const $fnData = get_shop_info.execute([{ step: $parent.get('id'), pgCodec: TYPES.int, name: 'id_param' }], 'normal')
 
-          return lambda([$fnData, $filter], ([fnData, filter]) => {
-            return { pet: fnData, filter }
-          });
+          return $fnData;
         },
         customersInfo($parent, { $filter }) {
           const $fnData = get_shop_info.execute([{ step: $parent.get('id'), pgCodec: TYPES.int, name: 'id_param' }], 'normal')
 
-          return lambda([$fnData, $filter], ([fnData, filter]) => {
-            return { customer: fnData, filter }
-          });
+          return $fnData;
         }
       },
-      Pet: {
-        shop($parent) {
-          return shop.get({ id: $parent.get('shop_id') });
+      ShopFrontImage: {
+        layouts($parent) {
+          const $layouts = image.find({
+            parent_id: $parent.get('id'),
+            parent_type: 'shop',
+            type: 'front',
+          });
+          return $layouts.single();
         }
       }
     },

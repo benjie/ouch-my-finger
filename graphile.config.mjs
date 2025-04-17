@@ -12,6 +12,7 @@ import { PgOmitArchivedPlugin } from "@graphile-contrib/pg-omit-archived";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { myExtensions } from "./plugins.mjs";
+import { createPgGroupedAttributesPlugin } from "@axinom/pg-grouped-attributes-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -35,7 +36,7 @@ const preset = {
     PgAggregatesPreset,
     // PgSimplifyInflectionPreset
   ],
-  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin, TagsFilePlugin, myExtensions],
+  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin, TagsFilePlugin, createPgGroupedAttributesPlugin({ separator: '__' }), myExtensions],
   pgServices: [
     makePgService({
       // Database connection string:

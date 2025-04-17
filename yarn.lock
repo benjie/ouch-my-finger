@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@axinom/pg-grouped-attributes-plugin@^0.0.2-beta.15":
+  version "0.0.2-beta.15"
+  resolved "https://registry.yarnpkg.com/@axinom/pg-grouped-attributes-plugin/-/pg-grouped-attributes-plugin-0.0.2-beta.15.tgz#222dfc86302f3d197d38714b18d2275508776c46"
+  integrity sha512-xOXTiZVNSYtWCtzb4kuHU+722AY87nIp8c2evFL1jfPBUQSnzFM6uk3sghDN3/TeDwX6EORfATx/Qy07uI5rJg==
+  dependencies:
+    "@dataplan/pg" "^0.0.1-beta.32"
+    postgraphile "^5.0.0-beta.40"
+
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz#00629c35a688e05a88b1cda684fb9d5e73f000a1"
@@ -17,7 +25,7 @@
     chalk "^4.1.2"
     tslib "^2.6.2"
 
-"@dataplan/pg@0.0.1-beta.32":
+"@dataplan/pg@0.0.1-beta.32", "@dataplan/pg@^0.0.1-beta.32":
   version "0.0.1-beta.32"
   resolved "https://registry.yarnpkg.com/@dataplan/pg/-/pg-0.0.1-beta.32.tgz#d4e4f5b3d5914bd9b3df3d3eec745562f296955b"
   integrity sha512-XQ5XK+P4CpeD7zi2IQI6MLL5RJwZowUw3acgcOw6fNrS833eHRn3fmY4HKGPUT/hMZwKX/Rah1mmhnFB/HQgmQ==
