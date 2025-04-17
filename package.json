@@ -7,7 +7,6 @@
     "postgraphile": "postgraphile"
   },
   "dependencies": {
-    "@axinom/pg-grouped-attributes-plugin": "^0.0.2-beta.15",
     "@grafserv/persisted": "^0.0.0-beta.34",
     "@graphile-contrib/pg-many-to-many": "^2.0.0-beta.7",
     "@graphile-contrib/pg-omit-archived": "^4.0.0-beta.4",

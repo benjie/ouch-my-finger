@@ -14,12 +14,7 @@ create table public.shop(
 	owner_id text,
 	di_pickup text,
 	di_worldwide text,
-	dis_special text,
-	front__title text,
-	front__description text,
-	front__image__title text,
-	front__image__caption text,
-	front__image__alt_text text
+	dis_special text
 );
 INSERT INTO public.shop (
 	id,
@@ -28,12 +23,7 @@ INSERT INTO public.shop (
 	owner_id,
 	di_pickup,
 	di_worldwide,
-	dis_special,
-	front__title,
-	front__description,
-	front__image__title,
-	front__image__caption,
-	front__image__alt_text
+	dis_special
 ) VALUES (
 	'1',
 	'One',
@@ -41,12 +31,7 @@ INSERT INTO public.shop (
 	'1',
 	'1',
 	'2',
-	'3',
-	'Front title',
-	'Front Description',
-	'Front image title',
-	'Front image caption',
-	'Front image alt text'
+	'3'
 ),
 (
 	'2',
@@ -55,12 +40,7 @@ INSERT INTO public.shop (
 	'2',
 	'1',
 	'2',
-	'3',
-	'Front title',
-	'Front Description',
-	'Front image title',
-	'Front image caption',
-	'Front image alt text'
+	'3'
 ),
 (
 	'3',
@@ -69,12 +49,7 @@ INSERT INTO public.shop (
 	'1',
 	'1',
 	'2',
-	'3',
-	'Front title',
-	'Front Description',
-	'Front image title',
-	'Front image caption',
-	'Front image alt text'
+	'3'
 ),
 (
 	'4',
@@ -83,16 +58,8 @@ INSERT INTO public.shop (
 	'2',
 	'1',
 	'2',
-	'3',
-	'Front title',
-	'Front Description',
-	'Front image title',
-	'Front image caption',
-	'Front image alt text'
+	'3'
 );
-comment on table public.shop is $$
-  @group front
-$$;
 
 drop table if exists public.pet;
 create table public.pet(

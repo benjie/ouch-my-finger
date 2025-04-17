@@ -14,13 +14,14 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
   return {
     typeDefs: gql`
       extend type Query {
-        shopsByIds(ids: [Int!]!): [Shop]!
+        shopsByIds(ids: [String!]!): [Shop]!
       }
 
       extend type Shop {
         info: ShopInfo
         owner: Owner
         options: MetaOptions
+        image: Image
       }
 
       type ShopInfo {
@@ -47,6 +48,14 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
       Shop: {
         info($parent) {
           return $parent;
+        },
+        image($parent) {
+          const $layouts = image.find({
+            parent_id: $parent.get('id'),
+            parent_type: 'shop',
+            type: 'front',
+          });
+          return $layouts.single();
         },
         owner($parent) {
           return owner
@@ -88,7 +97,7 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
           });
           return $layouts.single();
         }
-      }
+      },
     },
   };
 });
