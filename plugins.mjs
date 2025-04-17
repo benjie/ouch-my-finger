@@ -8,7 +8,7 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
         pgResources: { shop, owner, v_metadata, image, get_shop_info },
       },
     },
-    grafast: { each, constant, lambda, connection, object },
+    grafast: { each, constant, lambda, object },
   } = build;
 
   return {
@@ -25,8 +25,8 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
       }
 
       type ShopInfo {
-        petInfo(filter: String): JSON
-        customersInfo(filter: String): JSON
+        petInfo: JSON
+        customersInfo: JSON
       }
 
       type MetaOptions {
@@ -77,12 +77,12 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
         }
       },
       ShopInfo: {
-        petInfo($parent, { $filter }) {
+        petInfo($parent) {
           const $fnData = get_shop_info.execute([{ step: $parent.get('id'), pgCodec: TYPES.int, name: 'id_param' }], 'normal')
 
           return $fnData;
         },
-        customersInfo($parent, { $filter }) {
+        customersInfo($parent) {
           const $fnData = get_shop_info.execute([{ step: $parent.get('id'), pgCodec: TYPES.int, name: 'id_param' }], 'normal')
 
           return $fnData;

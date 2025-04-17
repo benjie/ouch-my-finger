@@ -45,7 +45,7 @@ INSERT INTO public.shop (
 (
 	'3',
 	'Three',
-	true,
+	false,
 	'1',
 	'1',
 	'2',
