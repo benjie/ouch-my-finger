@@ -1,85 +1,69 @@
-
-import { sideEffect } from "postgraphile/grafast";
-import { GraphQLError } from "postgraphile/graphql";
+import { TYPES } from 'postgraphile/@dataplan/pg';
 import { gql, makeExtendSchemaPlugin } from "postgraphile/utils";
 
 export const myExtensions = makeExtendSchemaPlugin((build) => {
   const {
     input: {
       pgRegistry: {
-        pgResources: { animal, shop, owner },
+        pgResources: { shop, pet, get_shop_info },
       },
     },
-    grafast: { connection },
+    grafast: { each, constant, lambda, connection },
   } = build;
 
   return {
     typeDefs: gql`
+      extend type Query {
+        shopsByIds(ids: [Int!]!): [Shop]!
+      }
+
       extend type Shop {
-        animals: AnimalsConnection
+        info: ShopInfo
+        pets: PetsConnection
       }
 
-      extend type CatAnimal {
-        owners: OwnersConnection
-      }
-      extend type DogAnimal {
-        owners: OwnersConnection
+      type ShopInfo {
+        petInfo(filter: String): JSON
+        customersInfo(filter: String): JSON
       }
 
-      extend type Owner {
-        hasClinic: Boolean
+      extend type Pet {
+        shop: Shop
       }
     `,
     plans: {
+      Query: {
+        shopsByIds(_, { $ids }) {
+          return each($ids, ($id) => shop.find({ id: $id, visible: constant(true) }).single())
+        }
+      },
       Shop: {
-        animals($shop, { $first }) {
-          sideEffect($first, (arg) => {
-            if (arg && arg > 10) {
-              throw new GraphQLError('wrong input')
-            }
-          })
-          const $animals = animal.find({
-            shop_id: $shop.get('id')
-          })
-
-          return connection($animals)
+        info($parent) {
+          return $parent;
         },
-      },
-      CatAnimal: {
-        owners($animal, { $first }) {
-          sideEffect($first, (arg) => {
-            if (arg && arg > 10) {
-              throw new GraphQLError('wrong input')
-            }
-          })
-          const $owners = owner.find({
-            animal_id: $animal.get('id')
-          })
-
-          return connection($owners);
+        pets($parent) {
+          return connection(pet.find({ shop_id: $parent.get('id') }))
         }
       },
-      DogAnimal: {
-        owners($animal, { $first }) {
-          sideEffect($first, (arg) => {
-            if (arg && arg > 10) {
-              throw new GraphQLError('wrong input')
-            }
-          })
-          const $owners = owner.find({
-            animal_id: $animal.get('id')
-          })
+      ShopInfo: {
+        petInfo($parent, { $filter }) {
+          const $fnData = get_shop_info.execute([{ step: $parent.get('id'), pgCodec: TYPES.int, name: 'id_param' }], 'normal')
 
-          return connection($owners);
+          return lambda([$fnData, $filter], ([fnData, filter]) => {
+            return { pet: fnData, filter }
+          });
+        },
+        customersInfo($parent, { $filter }) {
+          const $fnData = get_shop_info.execute([{ step: $parent.get('id'), pgCodec: TYPES.int, name: 'id_param' }], 'normal')
+
+          return lambda([$fnData, $filter], ([fnData, filter]) => {
+            return { customer: fnData, filter }
+          });
         }
       },
-      Owner: {
-        hasClinic($owner) {
-          const $shop = shop.get({
-            id: $owner.get('owner_id')
-          })
-
-          return $shop.get('has_clinic')
+      Pet: {
+        shop($parent) {
+          return shop.get({ id: $parent.get('shop_id') });
         }
       }
     },

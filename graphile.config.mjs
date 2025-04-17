@@ -26,6 +26,7 @@ const preset = {
     AmberPreset.default ?? AmberPreset,
     makeV4Preset({
       /* Enter your V4 options here */
+      dynamicJson: true,
       graphiql: true,
       graphiqlRoute: "/",
     }),

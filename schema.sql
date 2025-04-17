@@ -2,33 +2,47 @@ drop table if exists public.shop;
 create table public.shop(
 	id serial primary key,
 	name text,
-	type text not null,
-	has_clinic boolean
+	visible boolean
 );
-insert into public.shop (name, type, has_clinic)
-values('Super Axinom', 'super', true), ('Local Keells', 'local', false);
 
-drop table if exists public.animal;
-create table public.animal(
+INSERT INTO public.shop (name, visible)
+SELECT
+	substr(md5(random()::text), 1, 10),
+	random() < 0.5
+FROM generate_series(1, 50000);
+
+drop table if exists public.pet;
+create table public.pet(
 	id serial primary key,
 	name text,
-	type text not null,
-	shop_id integer not null
+	type text,
+	shop_id integer
 );
-comment on table public.animal is $$
-  @interface mode:single type:type
-  @type cat name:CatAnimal
-  @type dog name:DogAnimal
-$$;
-insert into public.animal (name, type, shop_id)
-values('Niki', 'dog', 1), ('Milo', 'cat', 2);
 
-drop table if exists public.owner;
-create table public.owner(
-	id serial primary key,
-	animal_id integer not null,
-	owner_type text not null,
-	owner_id integer not null
-);
-insert into public.owner (animal_id, owner_type, owner_id)
-values(1, 'person', 5), (2, 'shop', 6);
+INSERT INTO public.pet (name, type, shop_id)
+SELECT
+    substr(md5(random()::text), 1, 10) AS name,
+    (ARRAY['cat', 'dog', 'parrot', 'rabbit'])[floor(random() * 4 + 1)::int] AS type,
+    floor(random() * 50000 + 1)::int AS shop_id
+FROM generate_series(1, 50000);
+
+CREATE OR REPLACE FUNCTION public.get_shop_info(id_param integer)
+RETURNS json AS $$
+DECLARE
+    result_row json;
+BEGIN
+    SELECT json_build_object(
+      'assetId', s.id,
+	  'petId', p.id,
+	  'petType', p.type,
+	  'text', s.name || ' - ' || p.name
+    )
+    INTO result_row
+    FROM public.shop s
+    LEFT JOIN public.pet p
+      ON s.id = p.shop_id
+    WHERE s.id = id_param;
+
+    RETURN result_row;
+END;
+$$ LANGUAGE plpgsql STABLE;
