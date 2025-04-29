@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appdb
+    ports:
+      - "6432:5432"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+  postgraphile:
+    depends_on:
+      - postgres
+    build: .
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./graphile.config.mjs:/app/graphile.config.mjs
+      - ./tags.json5:/app/tags.json5
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/appdb
+    entrypoint: >
+      sh -c "
+        until pg_isready -h postgres -p 5432 -U postgres; do
+          echo 'Waiting for Postgres...';
+          sleep 1;
+        done;
+        exec npx --no-install postgraphile -n 0.0.0.0
+      "
