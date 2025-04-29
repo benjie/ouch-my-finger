@@ -5,7 +5,7 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
   const {
     input: {
       pgRegistry: {
-        pgResources: { cat, dog },
+        pgResources: { animal, tree },
       },
     },
     grafast: { access, each, object, constant, loadMany, context },
@@ -13,35 +13,40 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
 
   return {
     typeDefs: gql`
-      input AnimalIdsAndTypesInput {
-        id: String!
+      input IdsAndTypesInput {
+        id: Int!
         type: String!
       }
-      union Animal = Dog | Cat
+
+      union Earth = CatAnimal | DogAnimal | WolfAnimal | Tree
 
       extend type Query {
-        animals(input: [AnimalIdsAndTypesInput!]!): [Animal]!
-      }
-
-      extend type Cat {
-        enemies: JSON
+        earthList(input: [IdsAndTypesInput!]!): [Earth]!
       }
     `,
     plans: {
       Query: {
-        animals(_, fieldArgs) {
+        earthList(_, { $input }) {
           const entityMap = {
-            Cat: {
-              match: (specifier) => specifier.type === "CAT",
-              plan: ($specifier) => cat.get({ id: access($specifier, ["id"]) }),
+            CatAnimal: {
+              match: (specifier) => specifier.type === "cat",
+              plan: ($specifier) => animal.get({ id: access($specifier, ["id"]) }),
             },
-            Dog: {
-              match: (specifier) => specifier.type === "DOG",
-              plan: ($specifier) => dog.get({ id: access($specifier, ["id"]) }),
+            DogAnimal: {
+              match: (specifier) => specifier.type === "dog",
+              plan: ($specifier) => animal.get({ id: access($specifier, ["id"]) }),
+            },
+            WolfAnimal: {
+              match: (specifier) => specifier.type === "wolf",
+              plan: ($specifier) => animal.get({ id: access($specifier, ["id"]) }),
+            },
+            Tree: {
+              match: (specifier) => specifier.type === "tree",
+              plan: ($specifier) => tree.get({ id: access($specifier, ["id"]) }),
             },
           };
 
-          return each(fieldArgs.get("input"), ($content) => {
+          return each($input, ($content) => {
             const $specifier = object({
               id: access($content, ["id"]),
               type: access($content, ["type"]),
@@ -50,42 +55,6 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
           });
         },
       },
-      Cat: {
-        enemies() {
-          // const $settings = withPgClient(
-          //   cat.executor,
-          //   constant(null),
-          //   async (client) => {
-          //     const { rows } = await client.query({
-          //       text: /* SQL */ `
-          //       SELECT id
-          //       FROM public.cat
-          //     `,
-          //     });
-
-          //     return rows;
-          //   }
-          // );
-          const $settings = loadMany(constant(null), context().get('pool'), batchGetDogs);
-
-          return $settings;
-        },
-      },
     },
   };
 });
-
-async function batchGetDogs(data, { unary: dbClient }) {
-  if (data.length === 0) {
-    return [];
-  }
-
-  const result = await dbClient.query({
-    text: /* SQL */ `
-    SELECT id
-    FROM public.dog
-    `,
-  });
-
-  return data.map(() => result.rows);
-}
