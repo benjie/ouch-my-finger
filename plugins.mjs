@@ -1,14 +1,15 @@
 import { pgPolymorphic, withPgClient } from "postgraphile/@dataplan/pg";
+import { connection, lambda } from "postgraphile/grafast";
 import { gql, makeExtendSchemaPlugin } from "postgraphile/utils";
 
 export const myExtensions = makeExtendSchemaPlugin((build) => {
   const {
     input: {
       pgRegistry: {
-        pgResources: { animal, tree },
+        pgResources: { animal, tree, food },
       },
     },
-    grafast: { access, each, object, constant, loadMany, context },
+    grafast: { access, each, object },
   } = build;
 
   return {
@@ -23,10 +24,18 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
       extend type Query {
         earthList(input: [IdsAndTypesInput!]!): [Earth]!
       }
+
+      extend type CatAnimal {
+        food(sortBy: String): FoodsConnection
+      }
+      extend type DogAnimal {
+        food(sortBy: String): FoodsConnection
+      }
     `,
     plans: {
       Query: {
         earthList(_, { $input }) {
+          const $contents = resolveInputTypes(animal.executor, $input);
           const entityMap = {
             CatAnimal: {
               match: (specifier) => specifier.type === "cat",
@@ -46,7 +55,7 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
             },
           };
 
-          return each($input, ($content) => {
+          return each($contents, ($content) => {
             const $specifier = object({
               id: access($content, ["id"]),
               type: access($content, ["type"]),
@@ -55,6 +64,61 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
           });
         },
       },
+      CatAnimal: {
+        food($animal, { $sortBy }) {
+          const $foods = food.find({ animal_id: $animal.get('id') });
+
+          $foods.apply(lambda($sortBy, (sortBy) => (qb) => {
+            if (sortBy) {
+              qb.orderBy({ attribute: sortBy, direction: 'ASC' })
+            }
+          }));
+
+          return connection($foods);
+        }
+      },
+      DogAnimal: {
+        food($animal, { $sortBy }) {
+          const $foods = food.find({ animal_id: $animal.get('id') });
+          
+          $foods.apply(lambda($sortBy, (sortBy) => (qb) => {
+            if (sortBy) {
+              qb.orderBy({ attribute: sortBy, direction: 'ASC' })
+            }
+          }));
+
+          return connection($foods);
+        }
+      }
     },
   };
 });
+
+function resolveInputTypes(executor, $input) {
+  return withPgClient(executor, $input, async (pgClient, input) => {
+    const result = await pgClient.query({
+      text: /* SQL */ `
+        WITH input_list AS (
+          SELECT
+            row_number() OVER () AS ord,
+            item->>'id' AS id,
+            item->>'type' AS type
+          FROM json_array_elements($1::json) AS item
+        )
+        SELECT
+          il.id,
+          CASE
+            WHEN il.type = 'animal' THEN COALESCE(a.type, 'dog')
+            ELSE il.type
+          END AS type
+        FROM input_list il
+        LEFT JOIN animal a
+          ON a.id = il.id::int AND il.type = 'animal'
+        ORDER BY il.ord
+      `,
+      values: [JSON.stringify(input)],
+    });
+
+    return result.rows;
+  });
+}
