@@ -11,6 +11,7 @@ import PersistedPlugin from "@grafserv/persisted";
 import { PgOmitArchivedPlugin } from "@graphile-contrib/pg-omit-archived";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { myExtensions } from "./plugins.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -33,7 +34,7 @@ const preset = {
     PgAggregatesPreset,
     // PgSimplifyInflectionPreset
   ],
-  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin, TagsFilePlugin],
+  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin, TagsFilePlugin, myExtensions],
   pgServices: [
     makePgService({
       // Database connection string:
