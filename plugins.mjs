@@ -35,7 +35,6 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
     plans: {
       Query: {
         earthList(_, { $input }) {
-          const $contents = resolveInputTypes(animal.executor, $input);
           const entityMap = {
             CatAnimal: {
               match: (specifier) => specifier.type === "cat",
@@ -55,7 +54,7 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
             },
           };
 
-          return each($contents, ($content) => {
+          return each($input, ($content) => {
             const $specifier = object({
               id: access($content, ["id"]),
               type: access($content, ["type"]),
@@ -93,32 +92,3 @@ export const myExtensions = makeExtendSchemaPlugin((build) => {
     },
   };
 });
-
-function resolveInputTypes(executor, $input) {
-  return withPgClient(executor, $input, async (pgClient, input) => {
-    const result = await pgClient.query({
-      text: /* SQL */ `
-        WITH input_list AS (
-          SELECT
-            row_number() OVER () AS ord,
-            item->>'id' AS id,
-            item->>'type' AS type
-          FROM json_array_elements($1::json) AS item
-        )
-        SELECT
-          il.id,
-          CASE
-            WHEN il.type = 'animal' THEN COALESCE(a.type, 'dog')
-            ELSE il.type
-          END AS type
-        FROM input_list il
-        LEFT JOIN animal a
-          ON a.id = il.id::int AND il.type = 'animal'
-        ORDER BY il.ord
-      `,
-      values: [JSON.stringify(input)],
-    });
-
-    return result.rows;
-  });
-}
