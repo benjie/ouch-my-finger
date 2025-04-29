@@ -1,4 +1,4 @@
--- Animal
+-- Animal table
 drop table if exists public.animal;
 create table public.animal(
 	id serial primary key,
@@ -15,7 +15,7 @@ comment on table public.animal is $$
   @type cat name:CatAnimal
 $$;
 
--- Tree
+-- Tree table
 drop table if exists public.tree;
 create table public.tree(
 	id serial primary key,
@@ -24,7 +24,7 @@ create table public.tree(
 insert into public.tree (name)
 values ('Maho'), ('Kristina'), ('Jack');
 
--- Food
+-- Food table
 drop table if exists public.food;
 create table public.food(
 	id serial primary key,

@@ -54,7 +54,7 @@ const preset = {
     watch: true,
   },
   grafast: {
-    explain: true
+    explain: true,
   },
 };
 
