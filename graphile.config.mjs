@@ -1,6 +1,7 @@
 // @ts-check
 import { makePgService } from "@dataplan/pg/adaptors/pg";
 import AmberPreset from "postgraphile/presets/amber";
+import { PostGraphileRelayPreset } from "postgraphile/presets/relay";
 import { makeV4Preset } from "postgraphile/presets/v4";
 import { makePgSmartTagsFromFilePlugin } from "postgraphile/utils";
 import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connection-filter";
@@ -31,17 +32,22 @@ const preset = {
     PostGraphileConnectionFilterPreset,
     PgManyToManyPreset,
     PgAggregatesPreset,
+    PostGraphileRelayPreset,
     // PgSimplifyInflectionPreset
   ],
   plugins: [PersistedPlugin.default, PgOmitArchivedPlugin, TagsFilePlugin],
   pgServices: [
     makePgService({
       // Database connection string:
-      connectionString: process.env.DATABASE_URL,
+      connectionString:
+        process.env.DATABASE_URL ??
+        "postgres://postgres:postgres@localhost:5432/ouch",
       superuserConnectionString:
-        process.env.SUPERUSER_DATABASE_URL ?? process.env.DATABASE_URL,
+        process.env.SUPERUSER_DATABASE_URL ??
+        process.env.DATABASE_URL ??
+        "postgres://postgres:postgres@localhost:5432/ouch",
       // List of schemas to expose:
-      schemas: process.env.DATABASE_SCHEMAS?.split(",") ?? ["public"],
+      schemas: process.env.DATABASE_SCHEMAS?.split(",") ?? ["app_public"],
       // Enable LISTEN/NOTIFY:
       pubsub: true,
     }),
