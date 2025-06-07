@@ -21,10 +21,10 @@
     "ws": "^8.13.0"
   },
   "devDependencies": {
-    "@benjie/tsconfig": "^22.0.2",
+    "@benjie/tsconfig": "^22.0.3",
     "@types/express": "^4.17.17",
     "prettier": "^2.8.2",
-    "typescript": "^5.0.4"
+    "typescript": "^5.8.3"
   },
   "engine": {
     "node": "^22.6.0 || ^23.6.0 || >= 24"

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@benjie/tsconfig@^22.0.2":
-  version "22.0.2"
-  resolved "https://registry.yarnpkg.com/@benjie/tsconfig/-/tsconfig-22.0.2.tgz#65084f1bbd78e4cf557ede43d6efd745fcb76ae5"
-  integrity sha512-qk0dAk9KZHiR5ir6hgXLq1RLk0eXlphC7ukhOMl+JULVFQSwnGKobEHL3xF6BYG6Uo2UwSgjHVSQ0IZRX25YOA==
+"@benjie/tsconfig@^22.0.3":
+  version "22.0.3"
+  resolved "https://registry.yarnpkg.com/@benjie/tsconfig/-/tsconfig-22.0.3.tgz#e91f98f8d7a9b06a3d7a2fd992a1e212b3c52330"
+  integrity sha512-lIAUgSWZ05s2UfWtX+IH0HLnRxgVkQBDT7cHPCyMUlI4yNA1zq4gmANksDD6R9kBvhiSSPZMl8Yr8czn+ES9uQ==
 
 "@dataplan/json@0.0.1-beta.31":
   version "0.0.1-beta.31"
@@ -1149,11 +1149,6 @@ type-is@~1.6.18:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.24"
-
-typescript@^5.0.4:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
-  integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
 
 typescript@^5.8.3:
   version "5.8.3"
