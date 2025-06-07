@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@benjie/tsconfig@^22.0.1":
-  version "22.0.1"
-  resolved "https://registry.yarnpkg.com/@benjie/tsconfig/-/tsconfig-22.0.1.tgz#ca94c0d313a3e59b62a2044a28e37a0061c59367"
-  integrity sha512-gx0jH2ayR7n3CGkYOcLzqilvxPWFvDKTtp+DFvJ3OikCbviucgE4ZWDE0sl1o5+g07S9nFt3DV/HIjyPUHQJPg==
+"@benjie/tsconfig@^22.0.2":
+  version "22.0.2"
+  resolved "https://registry.yarnpkg.com/@benjie/tsconfig/-/tsconfig-22.0.2.tgz#65084f1bbd78e4cf557ede43d6efd745fcb76ae5"
+  integrity sha512-qk0dAk9KZHiR5ir6hgXLq1RLk0eXlphC7ukhOMl+JULVFQSwnGKobEHL3xF6BYG6Uo2UwSgjHVSQ0IZRX25YOA==
 
 "@dataplan/json@0.0.1-beta.31":
   version "0.0.1-beta.31"
