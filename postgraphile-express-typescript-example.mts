@@ -1,4 +1,5 @@
-// Run this with `npx ts-node --esm postgraphile-express-typescript-example.mts`
+// Run this with: `node --experimental-strip-types postgraphile-express-typescript-example.mts`
+// Or if you're old-school: `npx ts-node --esm postgraphile-express-typescript-example.mts`
 import preset from "./graphile.config.mjs";
 import { postgraphile } from "postgraphile";
 
