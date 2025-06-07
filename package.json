@@ -1,10 +1,11 @@
 {
   "name": "@localrepo/app",
+  "type": "module",
   "private": true,
   "scripts": {
-    "start": "GRAPHILE_ENV=production node server-express.mjs",
-    "dev": "GRAPHILE_ENV=development node server-express.mjs",
-    "ts": "GRAPHILE_ENV=development node --experimental-strip-types postgraphile-express-typescript-example.mts",
+    "start": "GRAPHILE_ENV=production yarn run server:express",
+    "dev": "GRAPHILE_ENV=development yarn run server:express",
+    "server:express": "node --experimental-strip-types server-express.ts",
     "postgraphile": "postgraphile"
   },
   "dependencies": {
@@ -20,7 +21,7 @@
     "ws": "^8.13.0"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^1.0.3",
+    "@benjie/tsconfig": "^22.0.0",
     "@types/express": "^4.17.17",
     "prettier": "^2.8.2",
     "typescript": "^5.0.4"

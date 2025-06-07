@@ -1,9 +1,8 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json",
+  "extends": "@benjie/tsconfig/quick.json",
   "compilerOptions": {
-    "allowJs": true,
-    "target": "es2022",
-    "module": "es2022",
-    "moduleResolution": "NodeNext"
-  }
+    "noEmit": true
+  },
+  "include": ["./"],
+  "exclude": ["dist", "build", "node_modules"]
 }
