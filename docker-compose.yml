@@ -19,7 +19,7 @@ services:
     ports:
       - "5678:5678"
     volumes:
-      - ./graphile.config.mjs:/app/graphile.config.mjs
+      - ./graphile.config.ts:/app/graphile.config.ts
       - ./tags.json5:/app/tags.json5
     environment:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/appdb

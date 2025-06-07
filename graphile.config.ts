@@ -1,4 +1,5 @@
-// @ts-check
+import "graphile-config";
+
 import { makePgService } from "@dataplan/pg/adaptors/pg";
 import AmberPreset from "postgraphile/presets/amber";
 import { makeV4Preset } from "postgraphile/presets/v4";
@@ -19,8 +20,7 @@ const __dirname = dirname(__filename);
 
 const TagsFilePlugin = makePgSmartTagsFromFilePlugin(`${__dirname}/tags.json5`);
 
-/** @satisfies {GraphileConfig.Preset} */
-const preset = {
+const preset: GraphileConfig.Preset = {
   extends: [
     AmberPreset.default ?? AmberPreset,
     makeV4Preset({

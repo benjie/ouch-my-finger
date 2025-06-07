@@ -1,8 +1,11 @@
 # Ouch! My finger!
 
-**BLEEDING EDGE SOFTWARE** - be sure to read the production caveats at
-https://grafast.org/caveats/ and wear appropriate personal protective equipment
-to protect your fingers from the sharp edges!
+You were using PostGraphile, but ouch! Something went wrong!
+
+Use this repository as a base to "build up" to a situation where you can
+reproduce your issue. Then strip it back down to the absolute minimum &mdash;
+the smallest SQL schema, the smallest list of plugins, the smallest diff
+possible &mdash; before filing an issue linking to it.
 
 ## Quickstart
 
@@ -25,7 +28,7 @@ your database schema name.)
 
 In addition to the quick command line above, you can set your database
 connection string and schemas as environmental variables or edit the relevant
-arguments in the `makePgSources` call in `graphile.config.mjs`.
+arguments in the `makePgSources` call in `graphile.config.ts`.
 
 ```bash
 # Different syntax may be required depending on your shell
@@ -42,12 +45,16 @@ yarn postgraphile
 Or run the library mode using an Express server:
 
 ```bash
-node server-express.mjs
+node server-express.ts
 ```
+
+(If you're using Node 22 rather than Node 24, you'll need to add the
+`--experimental-strip-types` flag to this command, or just run `yarn dev`
+instead.)
 
 ## Configuration
 
-The configuration is in `graphile.config.mjs`, details on the configuration file
+The configuration is in `graphile.config.ts`, details on the configuration file
 can be read about here:
 
 https://postgraphile.org/postgraphile/next/config
