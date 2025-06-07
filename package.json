@@ -26,6 +26,9 @@
     "prettier": "^2.8.2",
     "typescript": "^5.0.4"
   },
+  "engine": {
+    "node": "^22.6.0 || ^23.6.0 || >= 24"
+  },
   "prettier": {
     "proseWrap": "always"
   }
