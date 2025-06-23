@@ -1,4 +1,4 @@
-DROP SCHEMA IF EXISTS app_data, app_postgraphile CASCADE;
+DROP SCHEMA IF EXISTS app_data CASCADE;
 
 CREATE SCHEMA app_data;
 
@@ -35,9 +35,9 @@ ALTER TABLE ONLY app_data.objects
 ALTER TABLE ONLY app_data.object_states
   ADD CONSTRAINT "fkey_object_states_version_id" FOREIGN KEY (version_id) REFERENCES app_data.versions (id) DEFERRABLE INITIALLY DEFERRED;
 
-CREATE SCHEMA app_postgraphile;
+-- Default schema for Postgraphile follows
 
-CREATE VIEW app_postgraphile.objects AS
+CREATE VIEW objects AS
 WITH results AS MATERIALIZED (
   SELECT
     *
@@ -54,7 +54,7 @@ WITH results AS MATERIALIZED (
   ) v
 ) SELECT * FROM results;
 
-CREATE VIEW app_postgraphile.object_states AS
+CREATE VIEW object_states AS
 WITH results AS MATERIALIZED (
   SELECT
     *
@@ -70,7 +70,7 @@ WITH results AS MATERIALIZED (
       r.version_id DESC
   ) v
 ) SELECT * FROM results;
-COMMENT ON VIEW app_postgraphile.object_states IS $$
+COMMENT ON VIEW object_states IS $$
 @foreignKey (object_id) references objects (id)|@notNull|@fieldName object|@foreignFieldName states|The associated object.|
 $$;
 
