@@ -3,8 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "GRAPHILE_ENV=production yarn run server:express",
-    "dev": "GRAPHILE_ENV=development yarn run server:express",
+    "start": "yarn && GRAPHILE_ENV=production yarn run server:express",
+    "dev": "yarn && GRAPHILE_ENV=development yarn run server:express",
     "server:express": "node --experimental-strip-types server-express.ts",
     "postgraphile": "NODE_OPTIONS=\"--experimental-strip-types\" postgraphile"
   },

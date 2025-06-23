@@ -65,6 +65,10 @@ https://postgraphile.org/postgraphile/next/config
 Populate `schema.sql` with your example, then run:
 
 ```bash
+# Delete any existing volumes
+docker compose down -v || true
+
+# Rebuild and bring up docker
 docker compose up --build
 ```
 
