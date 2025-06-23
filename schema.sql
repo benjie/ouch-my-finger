@@ -53,6 +53,9 @@ WITH results AS MATERIALIZED (
       r.version_id DESC
   ) v
 ) SELECT * FROM results;
+COMMENT ON VIEW objects IS $$
+@primaryKey id
+$$;
 
 CREATE VIEW object_states AS
 WITH results AS MATERIALIZED (
@@ -71,6 +74,7 @@ WITH results AS MATERIALIZED (
   ) v
 ) SELECT * FROM results;
 COMMENT ON VIEW object_states IS $$
+@primaryKey id
 @foreignKey (object_id) references objects (id)|@notNull|@fieldName object|@foreignFieldName states|The associated object.|
 $$;
 
