@@ -9,7 +9,7 @@ possible &mdash; before filing an issue linking to it.
 
 ## Quickstart
 
-Install dependencies:
+Use Node 22.6 or higher (`nvm use 24`) and install dependencies:
 
 ```
 yarn
@@ -45,12 +45,13 @@ yarn postgraphile
 Or run the library mode using an Express server:
 
 ```bash
+# For Node 24+
 node server-express.ts
-```
 
-(If you're using Node 22 rather than Node 24, you'll need to add the
-`--experimental-strip-types` flag to this command, or just run `yarn dev`
-instead.)
+# For Node 22.6+
+node --experimental-strip-types server-express.ts
+# Or: yarn dev
+```
 
 ## Configuration
 

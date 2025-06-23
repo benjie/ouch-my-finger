@@ -6,7 +6,7 @@
     "start": "GRAPHILE_ENV=production yarn run server:express",
     "dev": "GRAPHILE_ENV=development yarn run server:express",
     "server:express": "node --experimental-strip-types server-express.ts",
-    "postgraphile": "postgraphile"
+    "postgraphile": "NODE_OPTIONS=\"--experimental-strip-types\" postgraphile"
   },
   "dependencies": {
     "@grafserv/persisted": "^0.0.0-beta.35",
