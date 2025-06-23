@@ -3,20 +3,20 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "GRAPHILE_ENV=production yarn run server:express",
-    "dev": "GRAPHILE_ENV=development yarn run server:express",
+    "start": "yarn && GRAPHILE_ENV=production yarn run server:express",
+    "dev": "yarn && GRAPHILE_ENV=development yarn run server:express",
     "server:express": "node --experimental-strip-types server-express.ts",
-    "postgraphile": "postgraphile"
+    "postgraphile": "NODE_OPTIONS=\"--experimental-strip-types\" postgraphile"
   },
   "dependencies": {
-    "@grafserv/persisted": "^0.0.0-beta.35",
-    "@graphile-contrib/pg-many-to-many": "^2.0.0-beta.8",
+    "@grafserv/persisted": "^0.0.0-beta.36",
+    "@graphile-contrib/pg-many-to-many": "^2.0.0-beta.9",
     "@graphile-contrib/pg-omit-archived": "^4.0.0-beta.4",
     "@graphile/pg-aggregates": "^0.2.0-beta.8",
     "@graphile/simplify-inflection": "^8.0.0-beta.7",
     "express": "^4.18.2",
-    "graphile": "^5.0.0-beta.41",
-    "postgraphile": "^5.0.0-beta.41",
+    "graphile": "^5.0.0-beta.43",
+    "postgraphile": "^5.0.0-beta.43",
     "postgraphile-plugin-connection-filter": "^3.0.0-beta.8",
     "ws": "^8.13.0"
   },
@@ -31,5 +31,6 @@
   },
   "prettier": {
     "proseWrap": "always"
-  }
+  },
+  "packageManager": "yarn@4.9.2"
 }
