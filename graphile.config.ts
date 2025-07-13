@@ -1,9 +1,13 @@
 import "graphile-config";
 
+import type { Step } from "postgraphile/grafast";
 import { makePgService } from "@dataplan/pg/adaptors/pg";
 import AmberPreset from "postgraphile/presets/amber";
 import { makeV4Preset } from "postgraphile/presets/v4";
-import { makePgSmartTagsFromFilePlugin } from "postgraphile/utils";
+import {
+  makePgSmartTagsFromFilePlugin,
+  makeWrapPlansPlugin,
+} from "postgraphile/utils";
 import { PostGraphileConnectionFilterPreset } from "postgraphile-plugin-connection-filter";
 import { PgAggregatesPreset } from "@graphile/pg-aggregates";
 import { PgManyToManyPreset } from "@graphile-contrib/pg-many-to-many";
@@ -19,6 +23,41 @@ const __dirname = dirname(__filename);
 // For configuration file details, see: https://postgraphile.org/postgraphile/next/config
 
 const TagsFilePlugin = makePgSmartTagsFromFilePlugin(`${__dirname}/tags.json5`);
+
+const ForbidInliningSmartTagPlugin = makeWrapPlansPlugin(
+  (context, build) => {
+    if (
+      !context.scope.isPgFieldConnection &&
+      !context.scope.isPgFieldSimpleCollection &&
+      !context.scope.isPgManyRelationConnectionField &&
+      !context.scope.isPgManyRelationListField &&
+      !context.scope.isPgSingleRelationField &&
+      !context.scope.isPgRowByUniqueConstraintField
+    ) {
+      return null;
+    }
+    if (context.scope.pgCodec?.extensions?.tags?.forbidInlining) {
+      const {
+        grafast: { __ListTransformStep },
+        dataplanPg: { PgSelectSingleStep, PgSelectStep },
+        EXPORTABLE,
+      } = build;
+      return EXPORTABLE(
+        (__ListTransformStep, PgSelectSingleStep, PgSelectStep) =>
+          function forbidInlining<T extends Step>(step: T): T {
+            let s: Step = step;
+            if (s instanceof __ListTransformStep) s = s.getListStep();
+            if (s instanceof PgSelectSingleStep) s = s.getClassStep();
+            if (s instanceof PgSelectStep) s.setInliningForbidden();
+            return step;
+          },
+        [__ListTransformStep, PgSelectSingleStep, PgSelectStep]
+      );
+    }
+    return null;
+  },
+  (forbidInlining) => (plan) => forbidInlining(plan())
+);
 
 const preset: GraphileConfig.Preset = {
   extends: [
@@ -37,7 +76,12 @@ const preset: GraphileConfig.Preset = {
     PgAggregatesPreset,
     PgSimplifyInflectionPreset,
   ],
-  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin, TagsFilePlugin],
+  plugins: [
+    PersistedPlugin.default,
+    PgOmitArchivedPlugin,
+    TagsFilePlugin,
+    ForbidInliningSmartTagPlugin,
+  ],
   pgServices: [
     makePgService({
       // Database connection string:

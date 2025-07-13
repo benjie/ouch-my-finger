@@ -53,6 +53,9 @@ WITH results AS MATERIALIZED (
       r.version_id DESC
   ) v
 ) SELECT * FROM results;
+COMMENT ON VIEW app_postgraphile.objects IS $$
+@forbidInlining
+$$;
 
 CREATE VIEW app_postgraphile.object_states AS
 WITH results AS MATERIALIZED (
@@ -71,6 +74,7 @@ WITH results AS MATERIALIZED (
   ) v
 ) SELECT * FROM results;
 COMMENT ON VIEW app_postgraphile.object_states IS $$
+@forbidInlining
 @foreignKey (object_id) references objects (id)|@notNull|@fieldName object|@foreignFieldName states|The associated object.|
 $$;
 
