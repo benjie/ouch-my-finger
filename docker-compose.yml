@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
@@ -27,6 +27,8 @@ services:
       - ./tags.json5:/app/tags.json5
     environment:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/appdb
+      - NODE_OPTIONS=--experimental-strip-types
+      - DEBUG=graphile-build:warn,@dataplan/pg:*
     entrypoint: >
       sh -c "
         yarn --frozen-lockfile
@@ -34,5 +36,5 @@ services:
           echo 'Waiting for Postgres...';
           sleep 1;
         done;
-        exec yarn postgraphile -n 0.0.0.0
+        exec yarn server:express -n 0.0.0.0
       "
