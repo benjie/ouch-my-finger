@@ -24,9 +24,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dataplan/pg@npm:0.0.1-beta.36":
-  version: 0.0.1-beta.36
-  resolution: "@dataplan/pg@npm:0.0.1-beta.36"
+"@dataplan/pg@npm:0.0.1-beta.37":
+  version: 0.0.1-beta.37
+  resolution: "@dataplan/pg@npm:0.0.1-beta.37"
   dependencies:
     "@dataplan/json": "npm:^0.0.1-beta.33"
     "@graphile/lru": "npm:^5.0.0-beta.4"
@@ -34,29 +34,22 @@ __metadata:
     chalk: "npm:^4.1.2"
     debug: "npm:^4.4.1"
     eventemitter3: "npm:^5.0.1"
-    grafast: "npm:^0.1.1-beta.25"
+    grafast: "npm:^0.1.1-beta.26"
     pg-sql2: "npm:^5.0.0-beta.9"
     postgres-array: "npm:~3.0.4"
     postgres-range: "npm:^1.1.4"
     tslib: "npm:^2.8.1"
   peerDependencies:
     "@dataplan/json": ^0.0.1-beta.33
-    grafast: ^0.1.1-beta.25
-    graphile-config: ^0.0.1-beta.17
+    grafast: ^0.1.1-beta.26
+    graphile-config: ^0.0.1-beta.18
+    graphql: ^16.1.0-experimental-stream-defer.6
     pg: ^8.7.1
     pg-sql2: ^5.0.0-beta.9
   peerDependenciesMeta:
-    "@dataplan/json":
-      optional: true
-    grafast:
-      optional: true
-    graphile-config:
-      optional: true
     pg:
       optional: true
-    pg-sql2:
-      optional: true
-  checksum: 10c0/d29a584f21fc1bd1b3817dd0b23b503af7e691156c382471820ec55a5a0238a279895d49bdd44e6a7216e7cc15c159704b56e2a2a86eb366a3e5fbb7b0f4215c
+  checksum: 10c0/22954d4b609ebf9251ebea904cea4673aef58ccee0f52b2d787d84003ff95bbba2e9cf907f58d405b97acd2c8f91c5bfcfed6b6b8a312636e557e8949fbb1e9b
   languageName: node
   linkType: hard
 
@@ -140,10 +133,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphile/simplify-inflection@npm:^8.0.0-beta.7":
-  version: 8.0.0-beta.7
-  resolution: "@graphile/simplify-inflection@npm:8.0.0-beta.7"
-  checksum: 10c0/efbcaae44b386f67b7eff44d09627a83609ec014783a81b6ded7308681f3916b59fba2f9bb1d26b7a8dea7b98d3a73aac55e6b8b38102d0bdb25986c9d77313e
+"@graphile/simplify-inflection@npm:^8.0.0-beta.8":
+  version: 8.0.0-beta.8
+  resolution: "@graphile/simplify-inflection@npm:8.0.0-beta.8"
+  checksum: 10c0/5ef29e2103826add09e02eeb4fb186c8d01a059100577d42b7618b70549073de0ff8031a981e6770579d7c73d1837649d46d892a9ffeac526962df8b44f33393
   languageName: node
   linkType: hard
 
@@ -156,11 +149,11 @@ __metadata:
     "@graphile-contrib/pg-many-to-many": "npm:^2.0.0-beta.9"
     "@graphile-contrib/pg-omit-archived": "npm:^4.0.0-beta.5"
     "@graphile/pg-aggregates": "npm:^0.2.0-beta.8"
-    "@graphile/simplify-inflection": "npm:^8.0.0-beta.7"
+    "@graphile/simplify-inflection": "npm:^8.0.0-beta.8"
     "@types/express": "npm:^4.17.17"
     express: "npm:^4.18.2"
-    graphile: "npm:^5.0.0-beta.44"
-    postgraphile: "npm:^5.0.0-beta.46"
+    graphile: "npm:^5.0.0-beta.45"
+    postgraphile: "npm:^5.0.0-beta.47"
     postgraphile-plugin-connection-filter: "npm:^3.0.0-beta.8"
     prettier: "npm:^2.8.2"
     typescript: "npm:^5.8.3"
@@ -233,7 +226,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.15.32, @types/node@npm:^22.16.3":
+"@types/node@npm:*, @types/node@npm:^22.16.3":
   version: 22.16.4
   resolution: "@types/node@npm:22.16.4"
   dependencies:
@@ -649,50 +642,45 @@ __metadata:
   languageName: node
   linkType: hard
 
-"grafast@npm:^0.1.1-beta.25":
-  version: 0.1.1-beta.25
-  resolution: "grafast@npm:0.1.1-beta.25"
+"grafast@npm:^0.1.1-beta.26":
+  version: 0.1.1-beta.26
+  resolution: "grafast@npm:0.1.1-beta.26"
   dependencies:
     "@graphile/lru": "npm:^5.0.0-beta.4"
     chalk: "npm:^4.1.2"
     debug: "npm:^4.4.1"
     eventemitter3: "npm:^5.0.1"
-    graphile-config: "npm:^0.0.1-beta.17"
+    graphile-config: "npm:^0.0.1-beta.18"
     graphql: "npm:^16.1.0-experimental-stream-defer.6"
     iterall: "npm:^1.3.0"
-    tamedevil: "npm:^0.0.0-beta.8"
+    tamedevil: "npm:^0.0.0-beta.9"
     tslib: "npm:^2.8.1"
   peerDependencies:
     "@envelop/core": ^5.0.0
     graphql: ^16.1.0-experimental-stream-defer.6
-    tamedevil: ^0.0.0-beta.8
   peerDependenciesMeta:
     "@envelop/core":
       optional: true
-    graphql:
-      optional: true
-    tamedevil:
-      optional: true
-  checksum: 10c0/fff1c661e27a6d1319d8b8f40e07e3de5ece97313302c3a425fb8a7a679a1bd2b86867f3810b038d78a9d1472c22d33dd7278ba5e7112bbfda32235b8a086402
+  checksum: 10c0/eef0059c6f4965c3dcf5e205b4eb38b83f79b01cb2ccda73d30afd5183e3964b561071391ed6933a80e06f7205a98f3f5f39380ab71d0394ba690c85a6305cfd
   languageName: node
   linkType: hard
 
-"grafserv@npm:^0.1.1-beta.27":
-  version: 0.1.1-beta.27
-  resolution: "grafserv@npm:0.1.1-beta.27"
+"grafserv@npm:^0.1.1-beta.28":
+  version: 0.1.1-beta.28
+  resolution: "grafserv@npm:0.1.1-beta.28"
   dependencies:
     "@graphile/lru": "npm:^5.0.0-beta.4"
     debug: "npm:^4.4.1"
     eventemitter3: "npm:^5.0.1"
-    graphile-config: "npm:^0.0.1-beta.17"
+    graphile-config: "npm:^0.0.1-beta.18"
     graphql-ws: "npm:^6.0.5"
-    ruru: "npm:^2.0.0-beta.25"
+    ruru: "npm:^2.0.0-beta.30"
     tslib: "npm:^2.8.1"
   peerDependencies:
     "@envelop/core": ^5.0.0
     "@whatwg-node/server": ^0.9.64
-    grafast: ^0.1.1-beta.24
-    graphile-config: ^0.0.1-beta.17
+    grafast: ^0.1.1-beta.26
+    graphile-config: ^0.0.1-beta.18
     graphql: ^16.1.0-experimental-stream-defer.6
     h3: ^1.13.0
     hono: ^4.6.15
@@ -702,84 +690,73 @@ __metadata:
       optional: true
     "@whatwg-node/server":
       optional: true
-    graphile-config:
-      optional: true
     h3:
       optional: true
     hono:
       optional: true
     ws:
       optional: true
-  checksum: 10c0/6cece95471331faa1c312e6251fe8fdfae9e559fd1351ada6b9adfd3021f609775a2cc53edbcf15385758ae30aeeae433186607962a0bb8346000e4ad694157a
+  checksum: 10c0/a0d62975f69905975b33ba87009a02960f51f592f3ee804f9daec24bd8adc20b6dd4b2020df87e15e4ad7bcd528a2489b9d518ac327783f7e80a6f37d71bd9d0
   languageName: node
   linkType: hard
 
-"graphile-build-pg@npm:5.0.0-beta.44":
-  version: 5.0.0-beta.44
-  resolution: "graphile-build-pg@npm:5.0.0-beta.44"
+"graphile-build-pg@npm:5.0.0-beta.45":
+  version: 5.0.0-beta.45
+  resolution: "graphile-build-pg@npm:5.0.0-beta.45"
   dependencies:
     "@types/node": "npm:^22.16.3"
     debug: "npm:^4.4.1"
-    graphile-config: "npm:^0.0.1-beta.17"
+    graphile-config: "npm:^0.0.1-beta.18"
     jsonwebtoken: "npm:^9.0.2"
     pg-introspection: "npm:^0.0.1-beta.12"
     pg-sql2: "npm:^5.0.0-beta.9"
     tslib: "npm:^2.8.1"
   peerDependencies:
-    "@dataplan/pg": ^0.0.1-beta.36
-    grafast: ^0.1.1-beta.25
-    graphile-build: 5.0.0-beta.37
-    graphile-config: ^0.0.1-beta.17
+    "@dataplan/pg": ^0.0.1-beta.37
+    grafast: ^0.1.1-beta.26
+    graphile-build: 5.0.0-beta.38
+    graphile-config: ^0.0.1-beta.18
     graphql: ^16.1.0-experimental-stream-defer.6
     pg: ^8.7.1
     pg-sql2: ^5.0.0-beta.9
-    tamedevil: ^0.0.0-beta.8
+    tamedevil: ^0.0.0-beta.9
   peerDependenciesMeta:
-    graphile-config:
-      optional: true
     pg:
       optional: true
-    pg-sql2:
-      optional: true
-  checksum: 10c0/8ef1e820919d69565a8a1e4691c4b8baa46c65feee58734beb900db441f74fb5f2f30372db8d353775df0d225a53bcee96894e110f1866e44e945030aa6f8151
+  checksum: 10c0/a02e54d04f82da2621dc0b04790b9293aab6e3bc882815264152bc3a07d2a762ba5ba1c0e55f86d7aee1891e71a8fb1c1f0df87bbdb8d180551648717e3ebb35
   languageName: node
   linkType: hard
 
-"graphile-build@npm:5.0.0-beta.37":
-  version: 5.0.0-beta.37
-  resolution: "graphile-build@npm:5.0.0-beta.37"
+"graphile-build@npm:5.0.0-beta.38":
+  version: 5.0.0-beta.38
+  resolution: "graphile-build@npm:5.0.0-beta.38"
   dependencies:
     "@types/node": "npm:^22.16.3"
     "@types/pluralize": "npm:^0.0.30"
     "@types/semver": "npm:^7.7.0"
     chalk: "npm:^4.1.2"
     debug: "npm:^4.4.1"
-    graphile-config: "npm:^0.0.1-beta.17"
+    graphile-config: "npm:^0.0.1-beta.18"
     graphql: "npm:^16.1.0-experimental-stream-defer.6"
     lodash: "npm:^4.17.21"
     pluralize: "npm:^7.0.0"
     semver: "npm:^7.7.2"
-    tamedevil: "npm:^0.0.0-beta.8"
+    tamedevil: "npm:^0.0.0-beta.9"
     tslib: "npm:^2.8.1"
   peerDependencies:
-    grafast: ^0.1.1-beta.25
-    graphile-config: ^0.0.1-beta.17
+    grafast: ^0.1.1-beta.26
+    graphile-config: ^0.0.1-beta.18
     graphql: ^16.1.0-experimental-stream-defer.6
-  peerDependenciesMeta:
-    graphile-config:
-      optional: true
-    graphql:
-      optional: true
-  checksum: 10c0/43fb992b29b86f381a664c82004dd5702a15ecdfeb1a66018608c3a374a05ea219e50b7ee0846a0e861e42431235b7ab15b0f8dc993f09f950d0f0e76d0c617c
+  checksum: 10c0/b49584aba55f053b08b3a502d05ebeeaddac323edb88597c1018df2451964dc6d0138cd47efd083e5ceeb15835f52fd9a288b1bc17b2b9563cbe73587fb65bf5
   languageName: node
   linkType: hard
 
-"graphile-config@npm:^0.0.1-beta.17":
-  version: 0.0.1-beta.17
-  resolution: "graphile-config@npm:0.0.1-beta.17"
+"graphile-config@npm:^0.0.1-beta.18":
+  version: 0.0.1-beta.18
+  resolution: "graphile-config@npm:0.0.1-beta.18"
   dependencies:
     "@types/interpret": "npm:^1.1.3"
-    "@types/node": "npm:^22.15.32"
+    "@types/node": "npm:^22.16.3"
     "@types/semver": "npm:^7.7.0"
     chalk: "npm:^4.1.2"
     debug: "npm:^4.4.1"
@@ -787,57 +764,53 @@ __metadata:
     semver: "npm:^7.7.2"
     tslib: "npm:^2.8.1"
     yargs: "npm:^17.7.2"
-  checksum: 10c0/cc872c55ed1899bfef58b43d4c2260fae9427b425b9f033aadcf2b2bda24fc2a7f6b1098a3ac87dd489cdb302b6e09634dc69640fa97698646a680d5be7353c3
+  checksum: 10c0/73e0c9914af4290160b94e9f10ad7b0e9fd31bf643ba63c8f9b2c586695d92d969c1891823a777ae3e606248326c8103a377b1318abb22d30f66c5b96cc08aca
   languageName: node
   linkType: hard
 
-"graphile-utils@npm:^5.0.0-beta.43":
-  version: 5.0.0-beta.43
-  resolution: "graphile-utils@npm:5.0.0-beta.43"
+"graphile-utils@npm:^5.0.0-beta.44":
+  version: 5.0.0-beta.44
+  resolution: "graphile-utils@npm:5.0.0-beta.44"
   dependencies:
     debug: "npm:^4.4.1"
     json5: "npm:^2.2.3"
     tslib: "npm:^2.8.1"
   peerDependencies:
-    "@dataplan/pg": ^0.0.1-beta.36
-    grafast: ^0.1.1-beta.25
-    graphile-build: ^5.0.0-beta.37
-    graphile-build-pg: ^5.0.0-beta.44
-    graphile-config: ^0.0.1-beta.17
+    "@dataplan/pg": ^0.0.1-beta.37
+    grafast: ^0.1.1-beta.26
+    graphile-build: ^5.0.0-beta.38
+    graphile-build-pg: ^5.0.0-beta.45
+    graphile-config: ^0.0.1-beta.18
     graphql: ^16.1.0-experimental-stream-defer.6
-    tamedevil: ^0.0.0-beta.8
+    tamedevil: ^0.0.0-beta.9
   peerDependenciesMeta:
-    "@dataplan/pg":
-      optional: true
     graphile-build-pg:
       optional: true
-  checksum: 10c0/2899a570e8f6c71163f977f93fbba9327f13784301f914ccddcdc3842edc1a6011410f37b788a874003a6700352838599b8c74d2796420b6dc02211a33b8aae6
+  checksum: 10c0/6b6999edb5bb1d918f01ba35a6791de047e9966efcb581c8be4be450c4513b28cf41061f11c4f0c4ecfafed845175216719e5dbb4d753c74dd32c87621f38cda
   languageName: node
   linkType: hard
 
-"graphile@npm:^5.0.0-beta.44":
-  version: 5.0.0-beta.44
-  resolution: "graphile@npm:5.0.0-beta.44"
+"graphile@npm:^5.0.0-beta.45":
+  version: 5.0.0-beta.45
+  resolution: "graphile@npm:5.0.0-beta.45"
   dependencies:
     "@typescript/vfs": "npm:^1.6.1"
     chalk: "npm:^4.1.2"
-    graphile-config: "npm:^0.0.1-beta.17"
+    graphile-config: "npm:^0.0.1-beta.18"
     tslib: "npm:^2.8.1"
     typescript: "npm:^5.8.3"
   peerDependencies:
-    graphile-build: ^5.0.0-beta.36
-    graphile-config: ^0.0.1-beta.17
-    postgraphile: ^5.0.0-beta.44
+    graphile-build: ^5.0.0-beta.38
+    graphile-config: ^0.0.1-beta.18
+    postgraphile: ^5.0.0-beta.47
   peerDependenciesMeta:
     graphile-build:
-      optional: true
-    graphile-config:
       optional: true
     postgraphile:
       optional: true
   bin:
     graphile: dist/cli-run.js
-  checksum: 10c0/6cded90cc164ed78044c17af24984f589ad53666a8d186c50960796a437e8cd6280eb1a739e980217315e47ed4e7637fb9a2c53dae36c08eb0c00d938675d67e
+  checksum: 10c0/cff70eb788d670dedc9fce7365bae98affc1c023b563a947676b409c770b8131506148f434c969ef8de9386a0005b7579e042a647a7095205c9634d32589fa3e
   languageName: node
   linkType: hard
 
@@ -1279,71 +1252,49 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postgraphile@npm:^5.0.0-beta.46":
-  version: 5.0.0-beta.46
-  resolution: "postgraphile@npm:5.0.0-beta.46"
+"postgraphile@npm:^5.0.0-beta.47":
+  version: 5.0.0-beta.47
+  resolution: "postgraphile@npm:5.0.0-beta.47"
   dependencies:
     "@dataplan/json": "npm:0.0.1-beta.33"
-    "@dataplan/pg": "npm:0.0.1-beta.36"
+    "@dataplan/pg": "npm:0.0.1-beta.37"
     "@graphile/lru": "npm:^5.0.0-beta.4"
     "@types/node": "npm:^22.16.3"
     "@types/pg": "npm:^8.15.4"
     debug: "npm:^4.4.1"
-    grafast: "npm:^0.1.1-beta.25"
-    grafserv: "npm:^0.1.1-beta.27"
-    graphile-build: "npm:5.0.0-beta.37"
-    graphile-build-pg: "npm:5.0.0-beta.44"
-    graphile-config: "npm:^0.0.1-beta.17"
-    graphile-utils: "npm:^5.0.0-beta.43"
+    grafast: "npm:^0.1.1-beta.26"
+    grafserv: "npm:^0.1.1-beta.28"
+    graphile-build: "npm:5.0.0-beta.38"
+    graphile-build-pg: "npm:5.0.0-beta.45"
+    graphile-config: "npm:^0.0.1-beta.18"
+    graphile-utils: "npm:^5.0.0-beta.44"
     graphql: "npm:^16.1.0-experimental-stream-defer.6"
     iterall: "npm:^1.3.0"
     jsonwebtoken: "npm:^9.0.2"
     pg: "npm:^8.16.3"
     pg-sql2: "npm:^5.0.0-beta.9"
-    tamedevil: "npm:^0.0.0-beta.8"
+    tamedevil: "npm:^0.0.0-beta.9"
     tslib: "npm:^2.8.1"
     ws: "npm:^8.18.3"
   peerDependencies:
     "@dataplan/json": 0.0.1-beta.33
-    "@dataplan/pg": 0.0.1-beta.36
+    "@dataplan/pg": 0.0.1-beta.37
     "@envelop/core": ^5.0.0
-    grafast: ^0.1.1-beta.25
-    grafserv: ^0.1.1-beta.27
-    graphile-build: 5.0.0-beta.37
-    graphile-build-pg: 5.0.0-beta.44
-    graphile-config: ^0.0.1-beta.17
+    grafast: ^0.1.1-beta.26
+    grafserv: ^0.1.1-beta.28
+    graphile-build: 5.0.0-beta.38
+    graphile-build-pg: 5.0.0-beta.45
+    graphile-config: ^0.0.1-beta.18
     graphql: ^16.1.0-experimental-stream-defer.6
     pg: ^8.7.1
     pg-sql2: ^5.0.0-beta.9
-    tamedevil: ^0.0.0-beta.8
+    tamedevil: ^0.0.0-beta.9
   peerDependenciesMeta:
-    "@dataplan/json":
-      optional: true
-    "@dataplan/pg":
-      optional: true
     "@envelop/core":
-      optional: true
-    grafast:
-      optional: true
-    grafserv:
-      optional: true
-    graphile-build:
-      optional: true
-    graphile-build-pg:
-      optional: true
-    graphile-config:
-      optional: true
-    graphql:
-      optional: true
-    pg:
-      optional: true
-    pg-sql2:
-      optional: true
-    tamedevil:
       optional: true
   bin:
     postgraphile: dist/cli-run.js
-  checksum: 10c0/fca3a27d340979017f21298bbda39e6a35d0366859adc80f501edbc12d0b9ead3d1a06c5d7c86093e6146eeedeeb70ab89ae31ef45ebadcee40b9f0b6f5dc6b0
+  checksum: 10c0/d1bea6793740564d1714a9a11c029902fbff321e48fb87107d46f052dbfa12d2a90074df3e2114bf8ae2a9b79805057da5047b7f8f3899dcc1648b52670171ec
   languageName: node
   linkType: hard
 
@@ -1452,27 +1403,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ruru@npm:^2.0.0-beta.25":
-  version: 2.0.0-beta.27
-  resolution: "ruru@npm:2.0.0-beta.27"
+"ruru@npm:^2.0.0-beta.30":
+  version: 2.0.0-beta.30
+  resolution: "ruru@npm:2.0.0-beta.30"
   dependencies:
     "@emotion/is-prop-valid": "npm:^1.3.1"
-    graphile-config: "npm:^0.0.1-beta.17"
+    graphile-config: "npm:^0.0.1-beta.18"
     graphql: "npm:^16.1.0-experimental-stream-defer.6"
     http-proxy: "npm:^1.18.1"
     tslib: "npm:^2.8.1"
     yargs: "npm:^17.7.2"
   peerDependencies:
-    graphile-config: ^0.0.1-beta.17
+    graphile-config: ^0.0.1-beta.18
     graphql: ^16.1.0-experimental-stream-defer.6
-  peerDependenciesMeta:
-    graphile-config:
-      optional: true
-    graphql:
-      optional: true
   bin:
     ruru: dist/cli-run.js
-  checksum: 10c0/eed0ccb1f301ee9f52efecac633989c8dfd21e2c7f09ab0e9888853b763f978e962e2f074540dec492944945d134b59ff36bf4af9afb9704bfe7a80dbd7c8c8d
+  checksum: 10c0/076ef6994808a9d79c84a80551ee8207e3d5389fee80215b0ad7520e09becc6f6c44169a4aa03e3c9932e0c51946981d3cb06fe26272ef18296d85020ad105a7
   languageName: node
   linkType: hard
 
@@ -1593,13 +1539,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tamedevil@npm:^0.0.0-beta.8":
-  version: 0.0.0-beta.8
-  resolution: "tamedevil@npm:0.0.0-beta.8"
+"tamedevil@npm:^0.0.0-beta.9":
+  version: 0.0.0-beta.9
+  resolution: "tamedevil@npm:0.0.0-beta.9"
   dependencies:
     "@graphile/lru": "npm:^5.0.0-beta.4"
     tslib: "npm:^2.8.1"
-  checksum: 10c0/0ce0e394f72c5fc56d1d57f4b1d5d8335366c90aa4937e2fcb824bcc9c35bb6edae83dedbeae75c69523de29ce56a781e8f6a43eee1e571f87a7d25d0ca967eb
+  checksum: 10c0/02da7679ddbf3059114ef64e6ad37ba8fd551e8a01b639f36ef69be0da93defa69f440fc7c5cb95321b0cf3de97a199d4c80669a5c4c6f994ee5b3ca95ed7290
   languageName: node
   linkType: hard
 
