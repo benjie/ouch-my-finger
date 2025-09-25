@@ -20,6 +20,28 @@ const __dirname = dirname(__filename);
 
 const TagsFilePlugin = makePgSmartTagsFromFilePlugin(`${__dirname}/tags.json5`);
 
+import { list, sideEffect } from "postgraphile/grafast";
+import { wrapPlans } from "postgraphile/utils";
+
+export const BrokenPlugin = wrapPlans(
+  (context) => {
+    return true;
+  },
+  () => (plan) => {
+    const $planResult = plan();
+    sideEffect(
+      list([$planResult]),
+      ([_result]) => {
+        console.warn(
+          "test",
+        );
+      },
+    );
+
+    return $planResult;
+  },
+);
+
 const preset: GraphileConfig.Preset = {
   extends: [
     AmberPreset.default ?? AmberPreset,
@@ -33,13 +55,18 @@ const preset: GraphileConfig.Preset = {
     PgAggregatesPreset,
     // PgSimplifyInflectionPreset
   ],
-  plugins: [PersistedPlugin.default, PgOmitArchivedPlugin, TagsFilePlugin],
+  plugins: [
+    PersistedPlugin.default,
+    PgOmitArchivedPlugin,
+    TagsFilePlugin,
+    BrokenPlugin,
+  ],
   pgServices: [
     makePgService({
       // Database connection string:
       connectionString: process.env.DATABASE_URL,
-      superuserConnectionString:
-        process.env.SUPERUSER_DATABASE_URL ?? process.env.DATABASE_URL,
+      superuserConnectionString: process.env.SUPERUSER_DATABASE_URL ??
+        process.env.DATABASE_URL,
       // List of schemas to expose:
       schemas: process.env.DATABASE_SCHEMAS?.split(",") ?? ["public"],
       // Enable LISTEN/NOTIFY:
