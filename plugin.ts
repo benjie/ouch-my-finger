@@ -19,52 +19,25 @@ export const extensionsPlugin = extendSchema((build) => {
         after: String
       }
 
-      input UserData {
-        abGroup: String!
-        userSegment: String!
-      }
-
-      input Filters {
-        contentOwner: [String!]
-      }
-
       input ContentInput {
-        appId: String!
-        tabId: String
-        user: UserData!
-        filters: Filters
         pagination: Pagination!
       }
 
       interface RecommendationItem {
         id: String!
-        recoModel: String
       }
 
       type MovieCollection implements RecommendationItem {
         id: String!
-        recoModel: String
       }
       type SeriesCollection implements RecommendationItem {
         id: String!
-        recoModel: String
       }
 
       type Recommendation {
         clusterId: String
-        clusterLabel: String
-        configuration: String!
-        recoId: String!
         items: [RecommendationItem!]
         pageInfo: PageInfo
-      }
-
-      input RecommendationInput {
-        appId: String!
-        editorialIds: [String]
-        user: UserData!
-        filters: Filters!
-        pagination: Pagination!
       }
 
       extend type Query {
@@ -109,9 +82,6 @@ export const extensionsPlugin = extendSchema((build) => {
 
             return object({
               clusterId: constant(''),
-              clusterLabel: constant(''),
-              configuration: constant(''),
-              recoId: constant(''),
               __conn: $conn,
             });
           },
