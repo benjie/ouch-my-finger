@@ -11,6 +11,7 @@ services:
       - "6432:5432"
     volumes:
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - postgres_data_1:/var/lib/postgresql/data
 
   postgraphile:
     depends_on:
@@ -24,9 +25,12 @@ services:
       - ./.yarn/:/app/.yarn/
       - ./.yarnrc.yml:/app/.yarnrc.yml
       - ./graphile.config.ts:/app/graphile.config.ts
+      - ./plugin.ts:/app/plugin.ts
       - ./tags.json5:/app/tags.json5
     environment:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/appdb
+      - GRAPHILE_ENV=development
+      - DEBUG=@dataplan/pg:PgExecutor:verbose
     entrypoint: >
       sh -c "
         yarn --frozen-lockfile
@@ -36,3 +40,6 @@ services:
         done;
         exec yarn postgraphile -n 0.0.0.0
       "
+
+volumes:
+  postgres_data_1:
