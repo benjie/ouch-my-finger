@@ -14,8 +14,7 @@
     "postgraphile-plugin-connection-filter": "3.0.0-beta.8"
   },
   "resolutions": {
-    "@dataplan/pg": "0.0.1-beta.39",
-    "grafast": "0.1.1-beta.26"
+    "@dataplan/pg": "0.0.1-beta.39"
   },
   "devDependencies": {
     "@benjie/tsconfig": "^22.0.3",
