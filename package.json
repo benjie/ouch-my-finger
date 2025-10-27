@@ -6,7 +6,7 @@
     "start": "yarn && GRAPHILE_ENV=production yarn run server:express",
     "dev": "yarn && GRAPHILE_ENV=development yarn run server:express",
     "server:express": "node --experimental-strip-types server-express.ts",
-    "postgraphile": "node ./scripts/run-postgraphile.mjs"
+    "postgraphile": "NODE_OPTIONS=\"--experimental-strip-types\" postgraphile"
   },
   "dependencies": {
     "@graphile/pg-aggregates": "0.2.0-beta.8",
